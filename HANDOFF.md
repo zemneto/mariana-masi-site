@@ -28,16 +28,16 @@ Antes desta sessão, "Mariana Masi Neuropsicologia" era tratada como projeto pes
 | Analytics | `@vercel/analytics` (`<Analytics />` no layout raiz) |
 | Proxy | `src/proxy.ts` (convenção nova do Next 16 — **não** `middleware.ts`, que está deprecated; ver `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/proxy.md` se for mexer nisso de novo) |
 
-## Tipografia — quase resolvida, falta 1 passo do José
+## Tipografia — resolvida
 
-A logo usa **Avenir Next Ultra Light**. É fonte comercial da Monotype — não existe versão gratuita legítima (sites que oferecem "grátis" hospedam cópia sem licença). José tem **Adobe Creative Cloud** e já criou o Web Project "Mariana Masi Site" em fonts.adobe.com com a família **Avenir Next LT Pro** (peso 200 = Ultra Light).
+A logo usa **Avenir Next Ultra Light**. É fonte comercial da Monotype — não existe versão gratuita legítima (sites que oferecem "grátis" hospedam cópia sem licença). José tem **Adobe Creative Cloud** e criou o Web Project "Mariana Masi Site" em fonts.adobe.com com a família **Avenir Next LT Pro** (peso 200 = Ultra Light).
 
-**Já integrado no código:**
+**Nota:** Adobe Fonts não usa mais allowlist de domínio (política mudou — o kit funciona em qualquer site, incluindo `localhost`, sem configurar nada). Confirmado com `getComputedStyle` que `font-family` resolve pra `avenir-next-lt-pro` com `font-weight: 200` — está ativo e funcionando.
+
+**Como está integrado:**
 - `src/app/[locale]/layout.tsx` carrega o kit via `<link rel="stylesheet" href="https://use.typekit.net/qiq2iiw.css">` no `<head>`.
-- `src/app/globals.css` define `--font-display: "avenir-next-lt-pro", var(--font-display-loaded), sans-serif;` — usa a Adobe primeiro, cai pro Jost (`next/font/google`, fallback livre) se a Adobe não resolver.
-- Headings principais usam peso explícito `font-[200]` (Tailwind arbitrary value) pra bater exato com o Ultra Light da Avenir Next.
-
-**Passo pendente do José:** no projeto "Mariana Masi Site" em fonts.adobe.com → **Edit Project → aba Domains** → adicionar `marianamasi.com`, `www.marianamasi.com` e `localhost` (esse último pra funcionar em dev/preview). Confirmado via teste local: a Adobe está recusando servir o CSS (`transferSize: 0`) porque nenhum domínio foi liberado ainda — assim que adicionar, a fonte real entra sem precisar mexer em mais nada no código.
+- `src/app/globals.css` define `--font-display: "avenir-next-lt-pro", var(--font-display-loaded), sans-serif;` — usa a Adobe primeiro, cai pro Jost (`next/font/google`, fallback livre, carregado via `displayFont` em `layout.tsx`) só se o kit da Adobe cair.
+- Headings principais usam peso explícito `font-[200]` (Tailwind arbitrary value) pra bater exato com o Ultra Light.
 
 ## Tratamento visual — pendência ativa
 
