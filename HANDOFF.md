@@ -28,13 +28,16 @@ Antes desta sessão, "Mariana Masi Neuropsicologia" era tratada como projeto pes
 | Analytics | `@vercel/analytics` (`<Analytics />` no layout raiz) |
 | Proxy | `src/proxy.ts` (convenção nova do Next 16 — **não** `middleware.ts`, que está deprecated; ver `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/proxy.md` se for mexer nisso de novo) |
 
-## Tipografia — pendência ativa
+## Tipografia — quase resolvida, falta 1 passo do José
 
-A logo usa **Avenir Next Ultralight**. É fonte comercial da Monotype — **não existe versão gratuita legítima**; sites que oferecem "Avenir Next grátis" hospedam cópia sem licença (a Monotype é conhecida por cobrar retroativamente quem usa isso num site). José confirmou que tem **Adobe Creative Cloud**, que inclui Avenir Next via Adobe Fonts para uso em Web Project — confirmado que a família está disponível em fonts.adobe.com com peso Ultra Light.
+A logo usa **Avenir Next Ultra Light**. É fonte comercial da Monotype — não existe versão gratuita legítima (sites que oferecem "grátis" hospedam cópia sem licença). José tem **Adobe Creative Cloud** e já criou o Web Project "Mariana Masi Site" em fonts.adobe.com com a família **Avenir Next LT Pro** (peso 200 = Ultra Light).
 
-**Passo pendente do José:** criar o Web Project em fonts.adobe.com (Avenir Next, peso Ultra Light, domínios `marianamasi.com` + `www.marianamasi.com` + `localhost`) e mandar o link de embed (`https://use.typekit.net/xxxxxxx.css`).
+**Já integrado no código:**
+- `src/app/[locale]/layout.tsx` carrega o kit via `<link rel="stylesheet" href="https://use.typekit.net/qiq2iiw.css">` no `<head>`.
+- `src/app/globals.css` define `--font-display: "avenir-next-lt-pro", var(--font-display-loaded), sans-serif;` — usa a Adobe primeiro, cai pro Jost (`next/font/google`, fallback livre) se a Adobe não resolver.
+- Headings principais usam peso explícito `font-[200]` (Tailwind arbitrary value) pra bater exato com o Ultra Light da Avenir Next.
 
-**Estado atual:** até esse link chegar, o site usa **Jost** (Google Fonts, `next/font/google`) como substituta temporária — geométrica e fina, mesmo espírito visual, licença livre. Está centralizada em `src/app/[locale]/layout.tsx` (variável `displayFont`) e no token CSS `--font-display` (`src/app/globals.css`). Quando o link da Adobe chegar, trocar só esses dois pontos (carregar via `<link>` no `<head>` em vez de `next/font/google`, apontando `--font-display-loaded` pro `font-family` que a Adobe define).
+**Passo pendente do José:** no projeto "Mariana Masi Site" em fonts.adobe.com → **Edit Project → aba Domains** → adicionar `marianamasi.com`, `www.marianamasi.com` e `localhost` (esse último pra funcionar em dev/preview). Confirmado via teste local: a Adobe está recusando servir o CSS (`transferSize: 0`) porque nenhum domínio foi liberado ainda — assim que adicionar, a fonte real entra sem precisar mexer em mais nada no código.
 
 ## Tratamento visual — pendência ativa
 
