@@ -21,7 +21,7 @@ export function Header() {
           onClick={() => setMenuAberto(false)}
         >
           <Image
-            src="/brain-mark.png"
+            src="/brain-mark-color.png"
             alt=""
             width={80}
             height={80}
