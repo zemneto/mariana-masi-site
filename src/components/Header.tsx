@@ -13,7 +13,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-tinta/10 bg-papel/95 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-3 sm:px-8">
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-2 sm:px-8">
         <Link
           href="/"
           className="shrink-0"
@@ -24,7 +24,7 @@ export function Header() {
             alt="Mariana Masi"
             width={216}
             height={216}
-            className="h-11 w-auto sm:h-12"
+            className="h-16 w-auto sm:h-20"
             priority
           />
         </Link>
