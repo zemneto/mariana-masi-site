@@ -143,7 +143,9 @@ function ArticleContent({
       )}
 
       <section className="mt-12 border-t border-tinta/10 pt-8">
-        <p className="font-display text-base text-tinta">{PROFILE.name}</p>
+        <p className="font-display text-base tracking-wide text-tinta uppercase">
+          {PROFILE.name}
+        </p>
         <p className="text-sm text-tinta-suave">{PROFILE.role[locale]}</p>
       </section>
 

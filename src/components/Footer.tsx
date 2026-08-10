@@ -17,7 +17,9 @@ export function Footer() {
     <footer className="border-t border-tinta/10 bg-tinta text-papel/90">
       <div className="mx-auto grid max-w-5xl gap-10 px-6 py-14 sm:grid-cols-3 sm:px-8">
         <div>
-          <p className="font-display text-lg">{PROFILE.name}</p>
+          <p className="font-display text-lg tracking-wide uppercase">
+            {PROFILE.name}
+          </p>
           <p className="mt-2 text-sm text-papel/60">{PROFILE.role[locale]}</p>
         </div>
 

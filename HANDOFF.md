@@ -39,6 +39,23 @@ A logo usa **Avenir Next Ultra Light**. É fonte comercial da Monotype — não 
 - `src/app/globals.css` define `--font-display: "avenir-next-lt-pro", var(--font-display-loaded), sans-serif;` — usa a Adobe primeiro, cai pro Jost (`next/font/google`, fallback livre, carregado via `displayFont` em `layout.tsx`) só se o kit da Adobe cair.
 - Headings principais usam peso explícito `font-[200]` (Tailwind arbitrary value) pra bater exato com o Ultra Light.
 
+## Direção de design — editorial/conceitual
+
+José achou o site "muito quadrado, institucional demais" mesmo depois da paleta resolvida — o problema era estrutural: toda seção era a mesma faixa com borda embaixo (título + texto + link), repetida. Redesenhado em torno de um conceito de **caderno de pesquisa editorial**:
+
+- **Hero full-bleed assimétrico**: nome em tipografia gigante ultra-fina (`text-[15vw]` no mobile até `xl:text-[76px]`), foto sem moldura tocando a borda da viewport (não mais caixa arredondada contida). Mesmo padrão no hero da página Sobre.
+- **"Áreas de interesse"** virou um índice numerado editorial (`01 Neuropsicologia ... descrição`) em vez de cards com borda — reusado em Home e Sobre.
+- **Ritmo assimétrico**: seções usam uma coluna de "kicker" numerado (01, 02, 03...) + coluna de conteúdo deslocada, em vez de blocos centralizados idênticos empilhados com `border-b` repetido.
+- **`framer-motion`** (novo em `package.json`): `src/components/Reveal.tsx` (fade+subida ao entrar na viewport), `src/components/MediaFrame.tsx` (zoom de entrada + hover sutil nas fotos), `src/components/AbstractLines.tsx` (motivo gráfico abstrato de linhas, amostrado do próprio traço da logo, com animação de "desenho" via `pathLength` — não é um ícone literal).
+- **Ticker/marquee** com as áreas de interesse como "eyebrow" do hero (`.marquee-track` em `globals.css`, respeita `prefers-reduced-motion`).
+- Nav do Header em versalete rastreado (`tracking-[0.18em] uppercase`) em vez de texto normal.
+
+**Bug real corrigido durante a verificação**: no mobile, o nome no hero vazava horizontalmente em vez de quebrar linha — clássica pegadinha de CSS (`min-width: auto` padrão em filho de flex/grid faz a caixa se dimensionar pelo conteúdo em vez do espaço disponível). Corrigido com `min-w-0` nas colunas de texto do hero (Home e Sobre). Se replicar esse padrão de hero em outra página, lembrar de aplicar `min-w-0` na coluna de texto.
+
+**Ajustes finos do José depois do redesign:**
+- "Mariana Costa Masi" em **caixa alta** sempre que usado como marca/wordmark (assim que a fonte foi desenhada pra ser usada, mesmo tratamento da logo) — aplicado no hero da Home, Header, Footer, `/links` e no author card do artigo. Não afeta menções dela em texto corrido (ex: "Mariana é psicóloga...").
+- **Header trocado**: em vez da imagem `logo-mariana-masi.png` (lockup completo achatado em PNG), agora usa só `public/brain-mark.png` (ícone isolado) + texto real "MARIANA COSTA MASI" em HTML (`font-display uppercase tracking-[0.14em]`) — mais proporcional no header e usa a fonte web de verdade em vez de texto travado num raster.
+
 ## Tratamento visual — resolvido
 
 José achou o primeiro preview "meio preto e branco demais" (parecia "site de memória póstuma"). Resolvido em duas partes:

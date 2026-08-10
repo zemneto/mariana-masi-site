@@ -38,7 +38,9 @@ function LinksContent() {
         alt={PROFILE.name}
         sizes="112px"
       />
-      <h1 className="mt-5 font-display text-2xl text-tinta">{PROFILE.name}</h1>
+      <h1 className="mt-5 font-display text-2xl tracking-wide text-tinta uppercase">
+        {PROFILE.name}
+      </h1>
       <p className="mt-1 text-sm text-tinta-suave">{PROFILE.role[locale]}</p>
 
       <div className="mt-8 flex w-full flex-col gap-3">

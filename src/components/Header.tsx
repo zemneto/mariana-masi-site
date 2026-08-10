@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { NAV_ITEMS, INSTITUTO_NEXIUM_URL } from "@/lib/site";
+import { PROFILE } from "@/content/profile";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header() {
@@ -13,20 +14,23 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-tinta/10 bg-papel/95 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-2 sm:px-8">
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4 sm:px-8">
         <Link
           href="/"
-          className="shrink-0"
+          className="flex shrink-0 items-center gap-3"
           onClick={() => setMenuAberto(false)}
         >
           <Image
-            src="/logo-mariana-masi.png"
-            alt="Mariana Masi"
-            width={216}
-            height={216}
-            className="h-16 w-auto sm:h-20"
+            src="/brain-mark.png"
+            alt=""
+            width={80}
+            height={80}
+            className="h-9 w-9 sm:h-10 sm:w-10"
             priority
           />
+          <span className="font-display text-sm tracking-[0.14em] text-tinta uppercase sm:text-base">
+            {PROFILE.name}
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">

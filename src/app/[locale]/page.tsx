@@ -53,7 +53,7 @@ function HomeContent() {
                 </span>
               </p>
             </div>
-            <h1 className="font-display text-[15vw] leading-[0.92] font-[200] break-words text-tinta sm:text-[10vw] lg:text-[5.4vw] xl:text-[76px]">
+            <h1 className="font-display text-[15vw] leading-[0.92] font-[200] tracking-wide break-words text-tinta uppercase sm:text-[10vw] lg:text-[5.4vw] xl:text-[76px]">
               {PROFILE.name}
             </h1>
             <p className="mt-6 text-base text-tinta-suave sm:text-lg">
