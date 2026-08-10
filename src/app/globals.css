@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #faf8f4;
-  --foreground: #1c1a17;
-  --color-papel: #faf8f4;
-  --color-tinta: #1c1a17;
-  --color-tinta-suave: #57534a;
-  --color-acento: #b3552f;
-  --color-linha: #1c1a17;
+  --background: #e9e3da;
+  --foreground: #1c3f4b;
+  --color-papel: #e9e3da;
+  --color-tinta: #1c3f4b;
+  --color-tinta-suave: #4d6068;
+  --color-acento: #c06c40;
+  --color-terracota: #c06c40;
+  --color-salvia: #7c9078;
 }
 
 @theme inline {
@@ -17,6 +18,8 @@
   --color-tinta: var(--color-tinta);
   --color-tinta-suave: var(--color-tinta-suave);
   --color-acento: var(--color-acento);
+  --color-terracota: var(--color-terracota);
+  --color-salvia: var(--color-salvia);
   --font-sans: var(--font-inter);
   --font-display: "avenir-next-lt-pro", var(--font-display-loaded), sans-serif;
 }

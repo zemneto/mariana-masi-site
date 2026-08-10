@@ -57,7 +57,7 @@ function HomeContent() {
               alt={PROFILE.name}
               fill
               priority
-              className="object-cover grayscale"
+              className="object-cover"
               sizes="(min-width: 1024px) 420px, 100vw"
             />
           </div>
@@ -84,7 +84,11 @@ function HomeContent() {
           </h2>
           <div className="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-2">
             {AREAS_DE_INTERESSE.map((area) => (
-              <div key={area.slug} className="border-t border-tinta/15 pt-4">
+              <div
+                key={area.slug}
+                className="border-t-2 pt-4"
+                style={{ borderTopColor: area.cor }}
+              >
                 <h3 className="font-display text-lg text-tinta">
                   {area.titulo[locale]}
                 </h3>

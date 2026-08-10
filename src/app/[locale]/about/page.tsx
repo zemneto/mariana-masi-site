@@ -45,7 +45,7 @@ function AboutContent() {
           src="/photos/mariana-about.jpg"
           alt={PROFILE.name}
           fill
-          className="object-cover grayscale"
+          className="object-cover"
           sizes="384px"
         />
       </div>
@@ -81,7 +81,11 @@ function AboutContent() {
         </h2>
         <ul className="mt-4 grid gap-4 sm:grid-cols-2">
           {AREAS_DE_INTERESSE.map((area) => (
-            <li key={area.slug}>
+            <li
+              key={area.slug}
+              className="border-l-2 pl-4"
+              style={{ borderLeftColor: area.cor }}
+            >
               <p className="font-display text-base text-tinta">
                 {area.titulo[locale]}
               </p>

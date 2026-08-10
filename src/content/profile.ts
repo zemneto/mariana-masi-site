@@ -32,6 +32,7 @@ export const AREAS_DE_INTERESSE: AreaDeInteresse[] = [
       pt: "Avaliação, cognição e a relação entre função cerebral e comportamento.",
       en: "Assessment, cognition and the relationship between brain function and behavior.",
     },
+    cor: "var(--color-terracota)",
   },
   {
     slug: "envelhecimento-e-cognicao",
@@ -40,6 +41,7 @@ export const AREAS_DE_INTERESSE: AreaDeInteresse[] = [
       pt: "Envelhecimento cognitivo, demências, prevenção e longevidade saudável.",
       en: "Cognitive aging, dementia, prevention and healthy longevity.",
     },
+    cor: "var(--color-salvia)",
   },
   {
     slug: "neurociencia",
@@ -48,6 +50,7 @@ export const AREAS_DE_INTERESSE: AreaDeInteresse[] = [
       pt: "Compreender processos cognitivos a partir da neurociência contemporânea.",
       en: "Understanding cognitive processes through contemporary neuroscience.",
     },
+    cor: "var(--color-terracota)",
   },
   {
     slug: "tecnologia-e-ia",
@@ -56,6 +59,7 @@ export const AREAS_DE_INTERESSE: AreaDeInteresse[] = [
       pt: "Como tecnologia e inteligência artificial podem transformar avaliação, pesquisa e cuidado em saúde.",
       en: "Exploring how technology and artificial intelligence may transform assessment, research and healthcare.",
     },
+    cor: "var(--color-salvia)",
   },
 ];
 

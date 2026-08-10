@@ -37,7 +37,7 @@ function LinksContent() {
           src="/photos/mariana-portrait.jpg"
           alt={PROFILE.name}
           fill
-          className="object-cover grayscale"
+          className="object-cover"
           sizes="112px"
         />
       </div>

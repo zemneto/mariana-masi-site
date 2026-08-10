@@ -7,6 +7,7 @@ export type AreaDeInteresse = {
   slug: string;
   titulo: LocalizedText;
   descricao: LocalizedText;
+  cor: string;
 };
 
 export type Article = {
