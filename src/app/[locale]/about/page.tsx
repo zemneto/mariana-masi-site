@@ -36,7 +36,7 @@ function AboutContent() {
 
   return (
     <Container className="max-w-3xl py-16 sm:py-20">
-      <h1 className="font-display text-4xl font-light text-tinta sm:text-5xl">
+      <h1 className="font-display text-4xl font-[200] text-tinta sm:text-5xl">
         {t("heading")}
       </h1>
 

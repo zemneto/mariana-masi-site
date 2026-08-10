@@ -11,10 +11,9 @@ import { INSTAGRAM_URL, SITE_URL } from "@/lib/site";
 import { PROFILE } from "@/content/profile";
 import "../globals.css";
 
-// Placeholder pro font-family "Avenir Next" da logo — vamos trocar pra Adobe
-// Fonts (Avenir Next Ultra Light, via Web Project) assim que o José mandar o
-// link de embed do Creative Cloud. Jost é a alternativa gratuita mais
-// próxima (geométrica, mesmo peso ultra-fino).
+// Fallback caso o kit Adobe Fonts (Avenir Next LT Pro, carregado via <link>
+// abaixo) não resolva — domínio ainda não liberado no projeto Adobe, ou
+// offline. Jost é geométrica e fina, mesmo espírito visual.
 const displayFont = Jost({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500"],
@@ -97,6 +96,12 @@ export default async function LocaleLayout({
       lang={locale === "pt" ? "pt-BR" : "en-US"}
       className={`${displayFont.variable} ${inter.variable}`}
     >
+      <head>
+        {/* Kit Adobe Fonts do projeto "Mariana Masi Site" — Avenir Next LT
+            Pro. Só resolve nos domínios liberados no projeto (ver Domains em
+            fonts.adobe.com); até lá, cai no fallback Jost definido acima. */}
+        <link rel="stylesheet" href="https://use.typekit.net/qiq2iiw.css" />
+      </head>
       <body className="flex min-h-screen flex-col antialiased">
         <script
           type="application/ld+json"

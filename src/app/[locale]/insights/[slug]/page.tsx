@@ -92,7 +92,7 @@ function ArticleContent({
       <p className="mt-8 text-xs font-medium uppercase tracking-wide text-acento">
         {article.category}
       </p>
-      <h1 className="mt-2 font-display text-4xl font-light text-tinta sm:text-5xl">
+      <h1 className="mt-2 font-display text-4xl font-[200] text-tinta sm:text-5xl">
         {article.title}
       </h1>
       {article.subtitle && (
@@ -105,7 +105,7 @@ function ArticleContent({
         {article.author} ·{" "}
         {new Date(article.publishedAt).toLocaleDateString(
           locale === "pt" ? "pt-BR" : "en-US",
-          { year: "numeric", month: "long", day: "numeric" },
+          { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" },
         )}
         {article.readingTimeMinutes
           ? ` · ${t("readingTime", { minutes: article.readingTimeMinutes })}`

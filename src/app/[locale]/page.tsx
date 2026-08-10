@@ -26,7 +26,7 @@ function HomeContent() {
       <section className="border-b border-tinta/10">
         <Container className="grid gap-10 py-16 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
           <div>
-            <h1 className="font-display text-5xl font-light leading-[1.05] text-tinta sm:text-6xl">
+            <h1 className="font-display text-5xl font-[200] leading-[1.05] text-tinta sm:text-6xl">
               {PROFILE.name}
             </h1>
             <p className="mt-3 text-lg text-tinta-suave">

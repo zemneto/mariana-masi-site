@@ -12,7 +12,7 @@ import {
 } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return { title: PROFILE.name };
+  return { title: { absolute: PROFILE.name } };
 }
 
 export default async function LinksPage({

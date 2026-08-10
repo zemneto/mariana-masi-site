@@ -18,7 +18,7 @@
   --color-tinta-suave: var(--color-tinta-suave);
   --color-acento: var(--color-acento);
   --font-sans: var(--font-inter);
-  --font-display: var(--font-display-loaded);
+  --font-display: "avenir-next-lt-pro", var(--font-display-loaded), sans-serif;
 }
 
 body {
