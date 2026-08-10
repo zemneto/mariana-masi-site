@@ -2,7 +2,7 @@
 
 > Documento único de retomada. Ao terminar um bloco de trabalho relevante, **atualize este arquivo** — ver protocolo de manutenção em `~/Desktop/Ecosystem/AGENTS.md`.
 
-**Criado em:** 10/08/2026, sessão inicial de construção (Fase 1 completa, ainda não publicado).
+**Atualizado em:** 10/08/2026 — Fase 1 completa e **publicada em produção**.
 
 ## O que é e por quê existe
 
@@ -12,9 +12,9 @@ Antes desta sessão, "Mariana Masi Neuropsicologia" era tratada como projeto pes
 
 ## Identidade e produção
 
-- **Domínio alvo:** `marianamasi.com` — já é da família, hoje apontado pro Wix. **Ainda não migrado** — falta cortar o DNS pra Vercel (mesmo processo já feito com `institutonexium.com`).
-- **Hospedagem:** vai pra mesma conta/organização Vercel dos outros projetos, como projeto próprio (não compartilha app nem domínio com Instituto Nexium Site).
-- **Repositório:** [github.com/zemneto/mariana-masi-site](https://github.com/zemneto/mariana-masi-site) (privado), remote em HTTPS (mesmo padrão da Instituto Nexium Site — **não** SSH, essa máquina não tem chave SSH configurada). Push feito, branch `main`.
+- **Produção:** [marianamasi.com](https://marianamasi.com) — domínio raiz redireciona (308) pra `www.marianamasi.com`, que serve o site. HTTPS ativo nos dois. Domínio registrado no Wix (só DNS, não hospedagem); DNS migrado (A record da raiz já apontava pro IP certo por coincidência, CNAME do `www` trocado de `cdn1.wixdns.net` pra `e0477eecfa780d51.vercel-dns-016.com`).
+- **Hospedagem:** Vercel, projeto `mariana-masi-site`, mesma conta/organização "Nexium" dos outros sites (plano Pro). Deploy automático a cada push pro `main`.
+- **Repositório:** [github.com/zemneto/mariana-masi-site](https://github.com/zemneto/mariana-masi-site) (privado), remote em HTTPS (mesmo padrão da Instituto Nexium Site — **não** SSH, essa máquina não tem chave SSH configurada, autentica via `credential.helper=osxkeychain`).
 - **Sem Supabase, sem backend** — conteúdo (artigos, pesquisa, publicações) como código em `src/content/*.ts`, editado via Claude Code e publicado por push. Mesmo padrão da Instituto Nexium Site.
 
 ## Arquitetura técnica
@@ -44,7 +44,7 @@ A logo usa **Avenir Next Ultra Light**. É fonte comercial da Monotype — não 
 José achou o primeiro preview "meio preto e branco demais" (parecia "site de memória póstuma"). Resolvido em duas partes:
 
 - **Paleta** (`src/app/globals.css`): fundo trocado do quase-branco pro **creme real** (`#e9e3da`, cor exata amostrada de `Mariana Masi Neuropsicologia/videos/bege.png` — que por coincidência é idêntica ao `--color-fundo` da Instituto Nexium Site, reforçando a "família visual" que o brief original pedia). Tinta do texto trocada de quase-preto pro **azul-marinho da logo** (`#1c3f4b`). As 4 cores "principais" definidas pelo José: **creme, azul, terracota (`#c06c40`) e verde-sálvia (`#7c9078`)** — as duas últimas amostradas por script direto dos traços do arquivo da logo (`videos/logo 2026 no BG.png`). Vinho e dourado foram descartados (existiam numa iteração intermediária, removidos a pedido dele). Terracota e sálvia alternam como acento nas 4 "Áreas de interesse" (Home e Sobre).
-- **Fotos**: removido o filtro CSS `grayscale` que existia em `page.tsx`/`about/page.tsx`/`links/page.tsx` — as fotos atuais em `public/photos/` são preto-e-branco por serem assim no photoshoot original, não por filtro. José ainda vai apontar quais fotos definitivas usar (provavelmente coloridas) — quando mandar, só trocar os arquivos em `public/photos/`, o código já está pronto pra cor.
+- **Fotos**: removido o filtro CSS `grayscale`. Fotos definitivas escolhidas pelo José (coloridas, de `PICS/nanihits_Web2048px_/` na pasta de assets): hero = `altaresoluo/alta-resolucao-61.jpg`, about = `altaresoluo/alta-resolucao-27.jpg`, links (avatar circular) = `redessociais/redes-sociais-5.jpg`.
 
 ## Conteúdo real pendente — `[REVISAR]`
 
@@ -61,36 +61,17 @@ Regra já usada na Instituto Nexium Site pra bios da equipe: **nunca inventar cr
 
 - Logo principal: `public/logo-mariana-masi.png` — cópia de `Mariana Masi Neuropsicologia/videos/logo 2026 no BG.png` (a versão mais recente entre as 3 pastas de logo que existiam; nome completo "Mariana Costa Masi", fundo transparente).
 - Favicon: `src/app/icon.png` — cópia redimensionada (512×512) de `LOGO/BRAIN/BRAIN.png` (marca isolada, traço preto).
-- Fotos: `public/photos/` — 3 fotos selecionadas de `PICS/nanihits_Web2048px_/altaresoluo/` (editorial, preto e branco, escolhidas provisoriamente por mim). José vai apontar as definitivas.
+- Fotos: `public/photos/` — 3 fotos definitivas (ver seção "Tratamento visual" acima).
 
-## Pendências gerais (ordem sugerida)
+## Pendências gerais
 
-1. ~~José aponta as fotos definitivas~~ — feito (hero, about, links).
-2. José/Mariana revisam todo conteúdo `[REVISAR]`.
-3. ~~Criar repositório remoto no GitHub e dar push~~ — feito, [github.com/zemneto/mariana-masi-site](https://github.com/zemneto/mariana-masi-site).
-4. Criar projeto na Vercel (mesma conta/organização), configurar domínio — ver passo a passo abaixo.
-5. Migrar DNS de `marianamasi.com` do Wix pra Vercel.
-6. Confirmar plano Vercel (Hobby não cobre uso comercial — provavelmente a conta já é Pro por causa dos outros dois sites).
-
-## Passo a passo: publicar (GitHub → Vercel → domínio)
-
-**1. Repositório no GitHub — feito.** [github.com/zemneto/mariana-masi-site](https://github.com/zemneto/mariana-masi-site), remote HTTPS (não SSH — máquina sem chave SSH configurada, autenticação via `credential.helper=osxkeychain`, mesmo padrão dos outros repos), branch `main` com push já enviado.
-
-**2. Criar o projeto na Vercel — próximo passo**
-   - Em [vercel.com/new](https://vercel.com/new), na mesma conta/organização "Nexium" já usada pelos outros sites, escolher "Import Git Repository" e selecionar o repo recém-criado.
-   - Framework detectado automaticamente como Next.js — não precisa mudar nada no build/output.
-   - Sem variáveis de ambiente pra configurar (sem Supabase, sem chaves).
-   - Deploy inicial cai num domínio temporário `*.vercel.app` — confirma que o build passa antes de mexer em domínio.
-
-**3. Apontar o domínio**
-   - No projeto Vercel → Settings → Domains → adicionar `marianamasi.com` e `www.marianamasi.com` (com redirect pra versão sem `www`, mesmo padrão do `institutonexium.com`).
-   - A Vercel mostra os registros DNS exatos pra configurar (A record ou CNAME, dependendo do registrador).
-   - No painel do Wix (onde o domínio está registrado hoje), trocar esses registros DNS pelos que a Vercel pedir. Propagação pode levar algumas horas.
-   - Confirmar HTTPS ativo automaticamente (Vercel cuida disso sozinho depois do DNS propagar).
+1. **José/Mariana revisam todo conteúdo `[REVISAR]`** — única pendência real que falta (ver seção acima com a lista completa: bio, formação, CRP, Lattes/ORCID/Scholar/LinkedIn, e-mail, pesquisa/publicações, primeiros artigos do Insights).
+2. Publicação (GitHub → Vercel → domínio) — **feita**, ver seção "Identidade e produção".
 
 ## Checklist de retomada para uma conversa nova
 
 1. Ler este arquivo inteiro antes de mexer em qualquer coisa.
-2. `git log --oneline` — ver o que já foi commitado localmente, e se já existe remoto (`git remote -v`).
+2. `git log --oneline` — ver o que já foi commitado; `git remote -v` só pra confirmar (já aponta pro GitHub).
 3. Não confundir com Instituto Nexium Site nem com Nexium Clinic — domínio, propósito e identidade visual são intencionalmente diferentes.
-4. Ao terminar, atualizar este `HANDOFF.md`.
+4. Site já está em produção (`marianamasi.com`) — qualquer push pro `main` publica direto. Cuidado redobrado com o que vai pro `main`.
+5. Ao terminar, atualizar este `HANDOFF.md`.
