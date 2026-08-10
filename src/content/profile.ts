@@ -10,16 +10,19 @@ export const PROFILE = {
     pt: "Explorando as conexões entre neuropsicologia, cognição, envelhecimento e as tecnologias que moldam o futuro da saúde mental.",
     en: "Exploring the connections between neuropsychology, cognition, aging and the technologies shaping the future of mental healthcare.",
   } satisfies LocalizedText,
-  // [REVISAR] texto de introdução final — hoje é uma descrição genérica da área de
-  // atuação, precisa passar pela revisão da Mariana antes de publicar como bio oficial.
+  // Fonte: texto biográfico enviado pela própria Mariana. Falta apenas o
+  // número de CRP (não estava no material recebido) — ver ACADEMIC_PROFILES /
+  // credentialsEmpty em about.
   introduction: {
     pt: [
-      "Mariana é psicóloga e neuropsicóloga, com interesse central nas relações entre cérebro, cognição e comportamento ao longo da vida.",
-      "Seu trabalho combina avaliação neuropsicológica, envelhecimento cognitivo e o uso de tecnologia e inteligência artificial aplicadas à saúde mental — sempre com base científica.",
+      "Com mais de uma década de atuação no campo da neuropsicologia clínica, Mariana Costa Masi é psicóloga especialista em Neuropsicologia, com sólida experiência em avaliação neuropsicológica e psicodiagnóstico.",
+      "À frente do Instituto Nexium, dedica-se à condução de um trabalho pautado pela precisão técnica e pelo cuidado individualizado, atendendo pacientes em diferentes fases da vida, da infância ao envelhecimento.",
+      "Além da atuação clínica, também presta serviços a empresas, auxiliando na implementação e adequação de programas voltados à saúde mental no ambiente de trabalho. Sua prática é orientada pelo compromisso com a qualidade, pela escuta qualificada e pela busca contínua por promover compreensão e bem-estar em diferentes contextos.",
     ],
     en: [
-      "Mariana is a psychologist and neuropsychologist with a central interest in the relationships between brain, cognition and behavior across the lifespan.",
-      "Her work combines neuropsychological assessment, cognitive aging and the use of technology and artificial intelligence applied to mental healthcare — always grounded in science.",
+      "With more than a decade of experience in clinical neuropsychology, Mariana Costa Masi is a psychologist specialized in Neuropsychology, with solid experience in neuropsychological assessment and psychodiagnostics.",
+      "At the helm of Instituto Nexium, she leads work grounded in technical precision and individualized care, seeing patients across every stage of life, from childhood to aging.",
+      "Beyond her clinical practice, she also provides services to companies, helping implement and adapt mental health programs in the workplace. Her practice is guided by a commitment to quality, attentive listening, and an ongoing pursuit of understanding and well-being across different contexts.",
     ],
   },
 } as const;
@@ -81,6 +84,29 @@ export const EDUCATION_TIMELINE: Array<{
   title: LocalizedText;
   institution?: string;
 }> = [
-  // [REVISAR] preencher com formação real (graduação, pós, especializações,
-  // estágios hospitalares) antes de publicar.
+  {
+    period: "2011",
+    title: { pt: "Graduação em Psicologia", en: "Bachelor's Degree in Psychology" },
+  },
+  {
+    period: "2013–2015",
+    title: {
+      pt: "Estágio voluntário — Avaliação Neuropsicológica Infantil (PANI), ambulatórios de epilepsia e foniatria",
+      en: "Volunteer internship — Pediatric Neuropsychological Assessment (PANI), epilepsy and speech-language outpatient clinics",
+    },
+    institution: "Hospital das Clínicas da FMUSP",
+  },
+  {
+    period: "2014",
+    title: { pt: "Especialização em Neuropsicologia", en: "Specialization in Neuropsychology" },
+    institution: "CEPSIC — Hospital das Clínicas da FMUSP",
+  },
+  {
+    period: "2025",
+    title: {
+      pt: "Aprimoramento em Avaliação e Reabilitação de Idosos (CPN/SARI)",
+      en: "Advanced Training in Assessment and Rehabilitation of Older Adults (CPN/SARI)",
+    },
+    institution: "UNIFESP",
+  },
 ];

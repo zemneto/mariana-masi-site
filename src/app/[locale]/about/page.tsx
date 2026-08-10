@@ -44,17 +44,22 @@ function AboutContent() {
 
   return (
     <>
-      {/* Hero */}
+      {/* Hero + Introdução — texto ao lado da foto, foto em tamanho integral (sem corte) */}
       <section className="border-b border-tinta/10">
-        <div className="mx-auto grid max-w-[1600px] lg:grid-cols-12">
-          <div className="flex min-w-0 flex-col justify-center px-6 pt-20 pb-14 sm:px-8 lg:col-span-7 lg:px-12 lg:pt-28 lg:pb-20 xl:pl-20">
+        <div className="mx-auto grid max-w-[1600px] lg:grid-cols-12 lg:items-center">
+          <div className="flex min-w-0 flex-col justify-center px-6 pt-20 pb-14 sm:px-8 lg:col-span-7 lg:px-12 xl:pl-20">
             <Kicker n="—" />
             <h1 className="mt-2 font-display text-6xl leading-[0.95] font-[200] text-tinta sm:text-7xl">
               {t("heading")}
             </h1>
+            <div className="mt-8 space-y-5 text-lg leading-relaxed text-tinta-suave">
+              {PROFILE.introduction[locale].map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
           </div>
           <MediaFrame
-            className="min-h-[420px] lg:col-span-5 lg:min-h-0"
+            className="aspect-[1365/2048] lg:col-span-5"
             src="/photos/mariana-about.jpg"
             alt={PROFILE.name}
             sizes="(min-width: 1024px) 42vw, 100vw"
@@ -62,28 +67,11 @@ function AboutContent() {
         </div>
       </section>
 
-      {/* 01 — Introdução */}
-      <section className="px-6 py-20 sm:px-8 sm:py-28">
-        <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-3">
-            <Kicker n="01" />
-            <h2 className="mt-2 font-display text-2xl text-tinta">
-              {t("introHeading")}
-            </h2>
-          </div>
-          <Reveal className="space-y-5 text-lg leading-relaxed text-tinta-suave lg:col-span-7 lg:col-start-5">
-            {PROFILE.introduction[locale].map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 02/03 — Trajetória + Neuropsicologia */}
+      {/* 01/02 — Trajetória + Neuropsicologia */}
       <section className="border-t border-tinta/10 px-6 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto grid max-w-[1600px] gap-16 lg:grid-cols-2 lg:gap-24">
           <Reveal>
-            <Kicker n="02" />
+            <Kicker n="01" />
             <h2 className="mt-2 font-display text-2xl text-tinta">
               {t("journeyHeading")}
             </h2>
@@ -92,7 +80,7 @@ function AboutContent() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <Kicker n="03" />
+            <Kicker n="02" />
             <h2 className="mt-2 font-display text-2xl text-tinta">
               {t("neuropsychologyHeading")}
             </h2>
@@ -103,11 +91,11 @@ function AboutContent() {
         </div>
       </section>
 
-      {/* 04 — Interesses de pesquisa */}
+      {/* 03 — Interesses de pesquisa */}
       <section className="border-t border-tinta/10 px-6 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1600px]">
           <div className="lg:col-span-3">
-            <Kicker n="04" />
+            <Kicker n="03" />
             <h2 className="mt-2 font-display text-2xl text-tinta">
               {t("researchInterestsHeading")}
             </h2>
@@ -140,7 +128,7 @@ function AboutContent() {
       <section className="border-t border-tinta/10 px-6 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-12">
           <div className="lg:col-span-3">
-            <Kicker n="05" />
+            <Kicker n="04" />
             <h2 className="mt-2 font-display text-2xl text-tinta">
               {t("clinicalHeading")}
             </h2>
@@ -159,11 +147,11 @@ function AboutContent() {
         </div>
       </section>
 
-      {/* 06/07 — Formação + Credenciais */}
+      {/* 05/06 — Formação + Credenciais */}
       <section className="border-t border-tinta/10 px-6 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto grid max-w-[1600px] gap-16 lg:grid-cols-2 lg:gap-24">
           <Reveal>
-            <Kicker n="06" />
+            <Kicker n="05" />
             <h2 className="mt-2 font-display text-2xl text-tinta">
               {t("educationHeading")}
             </h2>
@@ -190,7 +178,7 @@ function AboutContent() {
             )}
           </Reveal>
           <Reveal delay={0.1}>
-            <Kicker n="07" />
+            <Kicker n="06" />
             <h2 className="mt-2 font-display text-2xl text-tinta">
               {t("credentialsHeading")}
             </h2>
@@ -201,11 +189,11 @@ function AboutContent() {
         </div>
       </section>
 
-      {/* 08 — Perfis acadêmicos */}
+      {/* 07 — Perfis acadêmicos */}
       <section className="border-t border-tinta/10 px-6 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-12">
           <div className="lg:col-span-3">
-            <Kicker n="08" />
+            <Kicker n="07" />
             <h2 className="mt-2 font-display text-2xl text-tinta">
               {t("academicHeading")}
             </h2>
