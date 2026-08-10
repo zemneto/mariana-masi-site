@@ -1,10 +1,10 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PROFILE } from "@/content/profile";
 import { getPublishedArticles } from "@/content/insights";
+import { MediaFrame } from "@/components/MediaFrame";
 import {
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
@@ -32,15 +32,12 @@ function LinksContent() {
 
   return (
     <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-sm flex-col items-center px-6 py-16 text-center">
-      <div className="relative h-28 w-28 overflow-hidden rounded-full bg-tinta/5">
-        <Image
-          src="/photos/mariana-portrait.jpg"
-          alt={PROFILE.name}
-          fill
-          className="object-cover"
-          sizes="112px"
-        />
-      </div>
+      <MediaFrame
+        className="h-28 w-28 rounded-full bg-tinta/5"
+        src="/photos/mariana-portrait.jpg"
+        alt={PROFILE.name}
+        sizes="112px"
+      />
       <h1 className="mt-5 font-display text-2xl text-tinta">{PROFILE.name}</h1>
       <p className="mt-1 text-sm text-tinta-suave">{PROFILE.role[locale]}</p>
 

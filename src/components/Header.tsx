@@ -34,7 +34,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="font-display text-sm text-tinta/80 transition-colors hover:text-tinta"
+              className="text-[11px] font-medium tracking-[0.18em] text-tinta/75 uppercase transition-colors hover:text-tinta"
             >
               {t(item.key)}
             </Link>
