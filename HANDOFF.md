@@ -14,7 +14,7 @@ Antes desta sessão, "Mariana Masi Neuropsicologia" era tratada como projeto pes
 
 - **Domínio alvo:** `marianamasi.com` — já é da família, hoje apontado pro Wix. **Ainda não migrado** — falta cortar o DNS pra Vercel (mesmo processo já feito com `institutonexium.com`).
 - **Hospedagem:** vai pra mesma conta/organização Vercel dos outros projetos, como projeto próprio (não compartilha app nem domínio com Instituto Nexium Site).
-- **Repositório:** local em `~/Desktop/Ecosystem/Mariana Masi Site`, `git init` feito nesta sessão. **Sem remoto no GitHub ainda** — José precisa criar o repo (`gh`/CLI não estava disponível nesta sessão) e configurar o remote.
+- **Repositório:** [github.com/zemneto/mariana-masi-site](https://github.com/zemneto/mariana-masi-site) (privado), remote em HTTPS (mesmo padrão da Instituto Nexium Site — **não** SSH, essa máquina não tem chave SSH configurada). Push feito, branch `main`.
 - **Sem Supabase, sem backend** — conteúdo (artigos, pesquisa, publicações) como código em `src/content/*.ts`, editado via Claude Code e publicado por push. Mesmo padrão da Instituto Nexium Site.
 
 ## Arquitetura técnica
@@ -65,28 +65,18 @@ Regra já usada na Instituto Nexium Site pra bios da equipe: **nunca inventar cr
 
 ## Pendências gerais (ordem sugerida)
 
-1. José aponta as fotos definitivas (ver seção "Tratamento visual").
+1. ~~José aponta as fotos definitivas~~ — feito (hero, about, links).
 2. José/Mariana revisam todo conteúdo `[REVISAR]`.
-3. Criar repositório remoto no GitHub e dar push — ver passo a passo abaixo.
-4. Criar projeto na Vercel (mesma conta/organização), configurar env/domain.
+3. ~~Criar repositório remoto no GitHub e dar push~~ — feito, [github.com/zemneto/mariana-masi-site](https://github.com/zemneto/mariana-masi-site).
+4. Criar projeto na Vercel (mesma conta/organização), configurar domínio — ver passo a passo abaixo.
 5. Migrar DNS de `marianamasi.com` do Wix pra Vercel.
 6. Confirmar plano Vercel (Hobby não cobre uso comercial — provavelmente a conta já é Pro por causa dos outros dois sites).
 
 ## Passo a passo: publicar (GitHub → Vercel → domínio)
 
-Nenhum destes passos foi executado ainda — `gh` e `vercel` CLI não estavam disponíveis na sessão que construiu o site. Repo local já tem commits prontos (`git log --oneline`).
+**1. Repositório no GitHub — feito.** [github.com/zemneto/mariana-masi-site](https://github.com/zemneto/mariana-masi-site), remote HTTPS (não SSH — máquina sem chave SSH configurada, autenticação via `credential.helper=osxkeychain`, mesmo padrão dos outros repos), branch `main` com push já enviado.
 
-**1. Criar o repositório no GitHub**
-   - Em [github.com/new](https://github.com/new), criar um repositório **privado** (mesmo padrão dos outros 3 do Ecosystem), nome sugerido `mariana-masi-site`, sem inicializar com README/gitignore (o repo local já tem tudo).
-   - No terminal, dentro de `~/Desktop/Ecosystem/Mariana Masi Site`:
-     ```
-     git remote add origin git@github.com:<seu-usuario>/mariana-masi-site.git
-     git branch -M main
-     git push -u origin main
-     ```
-     (troque `<seu-usuario>` pelo usuário/organização do GitHub — o mesmo usado nos outros repos, `zemneto` na Instituto Nexium Site).
-
-**2. Criar o projeto na Vercel**
+**2. Criar o projeto na Vercel — próximo passo**
    - Em [vercel.com/new](https://vercel.com/new), na mesma conta/organização "Nexium" já usada pelos outros sites, escolher "Import Git Repository" e selecionar o repo recém-criado.
    - Framework detectado automaticamente como Next.js — não precisa mudar nada no build/output.
    - Sem variáveis de ambiente pra configurar (sem Supabase, sem chaves).
