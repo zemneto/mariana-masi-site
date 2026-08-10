@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "research": "Research",
+    "insights": "Insights",
+    "contact": "Contact",
+    "clinicalCare": "Clinical Care"
+  },
+  "footer": {
+    "navHeading": "Navigation",
+    "profilesHeading": "Professional profiles",
+    "clinicalHeading": "Clinical care",
+    "legalCopyright": "© {year} Mariana Masi"
+  },
+  "home": {
+    "heroCtaAbout": "About Mariana",
+    "heroCtaInsights": "Explore Insights",
+    "introHeading": "Who is Mariana",
+    "areasHeading": "Areas of interest",
+    "insightsHeading": "Latest thinking",
+    "insightsEmpty": "The first pieces are on their way.",
+    "insightsCta": "View all Insights",
+    "researchHeading": "Research",
+    "researchCta": "Explore Research",
+    "profileHeading": "Professional profile",
+    "profileCta": "Full profile",
+    "clinicalHeading": "Clinical Practice",
+    "clinicalText": "Mariana's clinical work in neuropsychology is conducted through Instituto Nexium.",
+    "clinicalCta": "Visit Instituto Nexium",
+    "newsletterHeading": "Notes from Mariana",
+    "newsletterText": "Coming soon: news on articles, research, neuroscience, aging and technology, straight to your inbox.",
+    "newsletterPlaceholder": "you@email.com",
+    "newsletterButton": "Subscribe",
+    "newsletterNote": "Under construction — subscriptions open soon."
+  },
+  "about": {
+    "heading": "About",
+    "introHeading": "Introduction",
+    "journeyHeading": "Journey",
+    "journeyText": "[TO REVIEW] Professional and academic journey to be detailed by Mariana.",
+    "neuropsychologyHeading": "Neuropsychology",
+    "neuropsychologyText": "[TO REVIEW] How Mariana became involved with the field — text pending confirmation.",
+    "researchInterestsHeading": "Research Interests",
+    "clinicalHeading": "Clinical Experience",
+    "clinicalText": "Mariana's clinical work in neuropsychology takes place through Instituto Nexium.",
+    "clinicalCta": "Instituto Nexium",
+    "educationHeading": "Education & Training",
+    "educationEmpty": "[TO REVIEW] Academic training, specializations and internships — pending confirmation.",
+    "credentialsHeading": "Professional Credentials",
+    "credentialsEmpty": "[TO REVIEW] Professional license and credentials — pending confirmation.",
+    "academicHeading": "Academic Profiles",
+    "academicEmpty": "Links to Lattes, ORCID, Google Scholar and LinkedIn will be added soon."
+  },
+  "research": {
+    "heading": "Research",
+    "questionsHeading": "Research questions",
+    "projectsHeading": "Projects",
+    "projectsEmpty": "No projects published yet — coming soon.",
+    "publicationsHeading": "Publications",
+    "publicationsEmpty": "No publications listed yet — coming soon."
+  },
+  "insights": {
+    "heading": "Insights",
+    "intro": "Thinking and writing on neuropsychology, neuroscience, aging and technology.",
+    "empty": "The first pieces are on their way.",
+    "readingTime": "{minutes} min read",
+    "backToInsights": "Back to Insights",
+    "relatedHeading": "Related articles",
+    "referencesHeading": "References"
+  },
+  "contact": {
+    "heading": "Contact",
+    "professionalHeading": "Professional / Academic",
+    "professionalText": "Research, universities, collaborations, speaking, press and partnerships.",
+    "emailLabel": "Email",
+    "clinicalHeading": "Clinical Care",
+    "clinicalText": "For neuropsychological assessment, psychotherapy or other clinical services, please contact Instituto Nexium.",
+    "clinicalCta": "Instituto Nexium"
+  },
+  "links": {
+    "latestArticle": "Latest Article",
+    "instagram": "Instagram",
+    "clinicalCare": "Instituto Nexium",
+    "contact": "Contact"
+  },
+  "language": {
+    "pt": "PT",
+    "en": "EN"
+  }
+}
