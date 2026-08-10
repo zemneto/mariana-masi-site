@@ -54,7 +54,7 @@ José achou o site "muito quadrado, institucional demais" mesmo depois da paleta
 
 **Ajustes finos do José depois do redesign:**
 - "Mariana Costa Masi" em **caixa alta** sempre que usado como marca/wordmark (assim que a fonte foi desenhada pra ser usada, mesmo tratamento da logo) — aplicado no hero da Home, Header, Footer, `/links` e no author card do artigo. Não afeta menções dela em texto corrido (ex: "Mariana é psicóloga...").
-- **Header trocado**: em vez da imagem `logo-mariana-masi.png` (lockup completo achatado em PNG), agora usa só `public/brain-mark.png` (ícone isolado) + texto real "MARIANA COSTA MASI" em HTML (`font-display uppercase tracking-[0.14em]`) — mais proporcional no header e usa a fonte web de verdade em vez de texto travado num raster.
+- **Header trocado**: em vez da imagem `logo-mariana-masi.png` (lockup completo achatado em PNG), agora usa só `public/brain-mark-color.png` (ícone isolado, versão colorida de `LOGO/BRAIN/BRAIN COLOR.png`, redimensionado pra 512px) + texto real "MARIANA COSTA MASI" em HTML (`font-display uppercase tracking-[0.14em]`) — mais proporcional no header e usa a fonte web de verdade em vez de texto travado num raster. O favicon (`src/app/icon.png`) também foi trocado pra essa versão colorida (era a versão preta antes).
 
 ## Tratamento visual — resolvido
 
