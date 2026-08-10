@@ -39,9 +39,12 @@ A logo usa **Avenir Next Ultra Light**. É fonte comercial da Monotype — não 
 - `src/app/globals.css` define `--font-display: "avenir-next-lt-pro", var(--font-display-loaded), sans-serif;` — usa a Adobe primeiro, cai pro Jost (`next/font/google`, fallback livre, carregado via `displayFont` em `layout.tsx`) só se o kit da Adobe cair.
 - Headings principais usam peso explícito `font-[200]` (Tailwind arbitrary value) pra bater exato com o Ultra Light.
 
-## Tratamento visual — pendência ativa
+## Tratamento visual — resolvido
 
-José achou o design "meio preto e branco demais" ao ver o primeiro preview. Perguntei se o problema é o filtro `grayscale` aplicado nas fotos (`className="... grayscale"` em `Header`/`page.tsx`/`about/page.tsx`/`links/page.tsx`), a paleta do site (hoje só tinta escura + um acento terracota `--color-acento`, sem as outras cores da logo — azul, verde-sálvia, dourado), ou as duas coisas — **ainda sem resposta**. Não mudar isso sozinho; esperar a decisão dele antes de mexer em `globals.css` ou nos `className` das imagens.
+José achou o primeiro preview "meio preto e branco demais" (parecia "site de memória póstuma"). Resolvido em duas partes:
+
+- **Paleta** (`src/app/globals.css`): fundo trocado do quase-branco pro **creme real** (`#e9e3da`, cor exata amostrada de `Mariana Masi Neuropsicologia/videos/bege.png` — que por coincidência é idêntica ao `--color-fundo` da Instituto Nexium Site, reforçando a "família visual" que o brief original pedia). Tinta do texto trocada de quase-preto pro **azul-marinho da logo** (`#1c3f4b`). As 4 cores "principais" definidas pelo José: **creme, azul, terracota (`#c06c40`) e verde-sálvia (`#7c9078`)** — as duas últimas amostradas por script direto dos traços do arquivo da logo (`videos/logo 2026 no BG.png`). Vinho e dourado foram descartados (existiam numa iteração intermediária, removidos a pedido dele). Terracota e sálvia alternam como acento nas 4 "Áreas de interesse" (Home e Sobre).
+- **Fotos**: removido o filtro CSS `grayscale` que existia em `page.tsx`/`about/page.tsx`/`links/page.tsx` — as fotos atuais em `public/photos/` são preto-e-branco por serem assim no photoshoot original, não por filtro. José ainda vai apontar quais fotos definitivas usar (provavelmente coloridas) — quando mandar, só trocar os arquivos em `public/photos/`, o código já está pronto pra cor.
 
 ## Conteúdo real pendente — `[REVISAR]`
 
@@ -58,22 +61,46 @@ Regra já usada na Instituto Nexium Site pra bios da equipe: **nunca inventar cr
 
 - Logo principal: `public/logo-mariana-masi.png` — cópia de `Mariana Masi Neuropsicologia/videos/logo 2026 no BG.png` (a versão mais recente entre as 3 pastas de logo que existiam; nome completo "Mariana Costa Masi", fundo transparente).
 - Favicon: `src/app/icon.png` — cópia redimensionada (512×512) de `LOGO/BRAIN/BRAIN.png` (marca isolada, traço preto).
-- Fotos: `public/photos/` — 3 fotos selecionadas de `PICS/nanihits_Web2048px_/altaresoluo/` (editorial, preto e branco). Há ~130 fotos na pasta original pra escolher mais se precisar.
+- Fotos: `public/photos/` — 3 fotos selecionadas de `PICS/nanihits_Web2048px_/altaresoluo/` (editorial, preto e branco, escolhidas provisoriamente por mim). José vai apontar as definitivas.
 
 ## Pendências gerais (ordem sugerida)
 
-1. José decide P&B vs. cor (ver seção acima).
-2. José manda o link de embed da Adobe Fonts.
-3. José/Mariana revisam todo conteúdo `[REVISAR]`.
-4. Criar repositório remoto no GitHub e dar push.
-5. Criar projeto na Vercel (mesma conta/organização), configurar env/domain.
-6. Migrar DNS de `marianamasi.com` do Wix pra Vercel.
-7. Confirmar plano Vercel (Hobby não cobre uso comercial — provavelmente a conta já é Pro por causa dos outros dois sites).
+1. José aponta as fotos definitivas (ver seção "Tratamento visual").
+2. José/Mariana revisam todo conteúdo `[REVISAR]`.
+3. Criar repositório remoto no GitHub e dar push — ver passo a passo abaixo.
+4. Criar projeto na Vercel (mesma conta/organização), configurar env/domain.
+5. Migrar DNS de `marianamasi.com` do Wix pra Vercel.
+6. Confirmar plano Vercel (Hobby não cobre uso comercial — provavelmente a conta já é Pro por causa dos outros dois sites).
+
+## Passo a passo: publicar (GitHub → Vercel → domínio)
+
+Nenhum destes passos foi executado ainda — `gh` e `vercel` CLI não estavam disponíveis na sessão que construiu o site. Repo local já tem commits prontos (`git log --oneline`).
+
+**1. Criar o repositório no GitHub**
+   - Em [github.com/new](https://github.com/new), criar um repositório **privado** (mesmo padrão dos outros 3 do Ecosystem), nome sugerido `mariana-masi-site`, sem inicializar com README/gitignore (o repo local já tem tudo).
+   - No terminal, dentro de `~/Desktop/Ecosystem/Mariana Masi Site`:
+     ```
+     git remote add origin git@github.com:<seu-usuario>/mariana-masi-site.git
+     git branch -M main
+     git push -u origin main
+     ```
+     (troque `<seu-usuario>` pelo usuário/organização do GitHub — o mesmo usado nos outros repos, `zemneto` na Instituto Nexium Site).
+
+**2. Criar o projeto na Vercel**
+   - Em [vercel.com/new](https://vercel.com/new), na mesma conta/organização "Nexium" já usada pelos outros sites, escolher "Import Git Repository" e selecionar o repo recém-criado.
+   - Framework detectado automaticamente como Next.js — não precisa mudar nada no build/output.
+   - Sem variáveis de ambiente pra configurar (sem Supabase, sem chaves).
+   - Deploy inicial cai num domínio temporário `*.vercel.app` — confirma que o build passa antes de mexer em domínio.
+
+**3. Apontar o domínio**
+   - No projeto Vercel → Settings → Domains → adicionar `marianamasi.com` e `www.marianamasi.com` (com redirect pra versão sem `www`, mesmo padrão do `institutonexium.com`).
+   - A Vercel mostra os registros DNS exatos pra configurar (A record ou CNAME, dependendo do registrador).
+   - No painel do Wix (onde o domínio está registrado hoje), trocar esses registros DNS pelos que a Vercel pedir. Propagação pode levar algumas horas.
+   - Confirmar HTTPS ativo automaticamente (Vercel cuida disso sozinho depois do DNS propagar).
 
 ## Checklist de retomada para uma conversa nova
 
 1. Ler este arquivo inteiro antes de mexer em qualquer coisa.
-2. Conferir se alguma das pendências ativas (tipografia, P&B/cor) foi resolvida numa conversa anterior — procurar no histórico ou perguntar ao José.
-3. `git log --oneline` — ver o que já foi commitado localmente (ainda sem remoto).
-4. Não confundir com Instituto Nexium Site nem com Nexium Clinic — domínio, propósito e identidade visual são intencionalmente diferentes.
-5. Ao terminar, atualizar este `HANDOFF.md`.
+2. `git log --oneline` — ver o que já foi commitado localmente, e se já existe remoto (`git remote -v`).
+3. Não confundir com Instituto Nexium Site nem com Nexium Clinic — domínio, propósito e identidade visual são intencionalmente diferentes.
+4. Ao terminar, atualizar este `HANDOFF.md`.
