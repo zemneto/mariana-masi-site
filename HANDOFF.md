@@ -2,7 +2,7 @@
 
 > Documento único de retomada. Ao terminar um bloco de trabalho relevante, **atualize este arquivo** — ver protocolo de manutenção em `~/Desktop/Ecosystem/AGENTS.md`.
 
-**Atualizado em:** 10/08/2026 — Fase 1 completa e **publicada em produção**.
+**Atualizado em:** 11/08/2026 — `next`/`eslint-config-next` atualizados pra 16.3.0 (auditoria de segurança do Ecosystem, corrige CVEs conhecidas do Next.js; `npm audit` já estava e continua com 0 vulnerabilidades; lint e `next build --webpack` validados). Fora isso, Fase 1 completa e **publicada em produção** (10/08/2026).
 
 ## O que é e por quê existe
 
