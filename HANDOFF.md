@@ -2,7 +2,7 @@
 
 > Documento único de retomada. Ao terminar um bloco de trabalho relevante, **atualize este arquivo** — ver protocolo de manutenção em `~/Desktop/Ecosystem/AGENTS.md`.
 
-**⏳ Pendente de aprovação (12/08/2026, ainda não commitado):** redesign visual completo do site — "Direção A / Traço Clínico". Rodando em `localhost:3002` aguardando José/Mariana aprovarem antes de commitar/subir.
+**✅ Publicado em produção (12/08/2026):** redesign visual completo do site — "Direção A / Traço Clínico". Aprovado pela Mariana e pelo José, commitado (`a5fb39d`) e enviado pro `main` — Vercel publica automaticamente em [marianamasi.com](https://marianamasi.com).
 
 ### Por que existe
 
