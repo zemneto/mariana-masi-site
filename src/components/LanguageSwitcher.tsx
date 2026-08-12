@@ -11,18 +11,19 @@ export function LanguageSwitcher() {
   const router = useRouter();
 
   return (
-    <div className="flex items-center gap-1 text-[11px] font-medium tracking-wide text-tinta-suave">
+    <div className="flex items-center gap-1 font-condensed text-[11px] tracking-wide text-tinta-suave">
       {routing.locales.map((loc, index) => (
         <span key={loc} className="flex items-center gap-1">
-          {index > 0 && <span className="text-tinta-suave/40">/</span>}
+          {index > 0 && <span className="text-tinta-suave/50">/</span>}
           <button
             type="button"
             onClick={() => router.replace(pathname, { locale: loc })}
             aria-current={locale === loc}
             className={
-              locale === loc
-                ? "text-tinta"
-                : "text-tinta-suave/70 transition-colors hover:text-tinta"
+              "px-1.5 py-1 " +
+              (locale === loc
+                ? "text-acento"
+                : "text-tinta-suave transition-colors hover:text-tinta")
             }
           >
             {t(loc)}

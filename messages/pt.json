@@ -5,7 +5,7 @@
     "research": "Pesquisa",
     "insights": "Insights",
     "contact": "Contato",
-    "clinicalCare": "Atendimento Clínico"
+    "clinicalCare": "Instituto Nexium"
   },
   "footer": {
     "navHeading": "Navegação",
@@ -36,19 +36,18 @@
   },
   "about": {
     "heading": "Sobre",
-    "introHeading": "Introdução",
-    "journeyHeading": "Trajetória",
-    "journeyText": "Formada em Psicologia em 2011, Mariana se especializou em Neuropsicologia em 2014 pelo CEPSIC, no Hospital das Clínicas da FMUSP. Entre 2013 e 2015, foi estagiária voluntária no PANI (Projeto de Avaliação Neuropsicológica Infantil) e em ambulatórios de epilepsia e foniatria do HC-FMUSP.",
+    "stampBadge": "Especialista · Neuropsicologia",
+    "introHeading": "Nota complementar",
     "neuropsychologyHeading": "Neuropsicologia",
-    "neuropsychologyText": "O interesse pela neuropsicologia esteve presente desde o início da graduação. Hoje, Mariana atua com avaliação e reabilitação neuropsicológica em todas as idades — de crianças a idosos —, com foco crescente em envelhecimento e neuropsicologia geriátrica.",
+    "neuropsychologyText": "O interesse pela neuropsicologia esteve presente desde o início da graduação. Hoje, Mariana supervisiona a equipe do Instituto Nexium em avaliação e reabilitação neuropsicológica em todas as idades — de pré-escolares a idosos —, com foco crescente em envelhecimento e neuropsicologia geriátrica.",
     "researchInterestsHeading": "Interesses de Pesquisa",
     "clinicalHeading": "Experiência Clínica",
-    "clinicalText": "O atendimento clínico da Mariana acontece na Clínica Jundiaí e no Consultório Itu, ambos sob o Instituto Nexium, com avaliação e reabilitação neuropsicológica ao longo de toda a vida.",
+    "clinicalText": "O atendimento clínico acontece nas unidades do Instituto Nexium — em Aldeia da Serra, Alphaville, Itu, Jundiaí e Sorocaba —, com avaliação e reabilitação neuropsicológica ao longo de toda a vida. Mariana é head e supervisora clínica do Instituto, sem atendimento próprio em agenda.",
     "clinicalCta": "Instituto Nexium",
     "educationHeading": "Formação",
     "educationEmpty": "[REVISAR] Formação acadêmica, especializações e estágios — pendente de confirmação.",
     "credentialsHeading": "Credenciais Profissionais",
-    "credentialsEmpty": "[REVISAR] Número de CRP a ser adicionado — pendente de confirmação.",
+    "credentialsEmpty": "Título de Especialista em Neuropsicologia pelo Conselho Federal de Psicologia (CFP). [REVISAR] Número de CRP a ser adicionado — pendente de confirmação.",
     "academicHeading": "Perfis Acadêmicos",
     "academicEmpty": "Links para Lattes, ORCID, Google Scholar e LinkedIn serão adicionados em breve."
   },
@@ -87,5 +86,10 @@
   "language": {
     "pt": "PT",
     "en": "EN"
+  },
+  "notFound": {
+    "heading": "Página não encontrada",
+    "text": "O endereço que você tentou acessar não existe ou foi movido.",
+    "cta": "Voltar para o início"
   }
 }

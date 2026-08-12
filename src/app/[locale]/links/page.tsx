@@ -38,16 +38,16 @@ function LinksContent() {
         alt={PROFILE.name}
         sizes="112px"
       />
-      <h1 className="mt-5 font-display text-2xl tracking-wide text-tinta uppercase">
+      <h1 className="mt-5 font-display font-[200] text-2xl tracking-wide text-tinta uppercase">
         {PROFILE.name}
       </h1>
-      <p className="mt-1 text-sm text-tinta-suave">{PROFILE.role[locale]}</p>
+      <p className="mt-1 font-condensed text-xs text-tinta-suave uppercase">{PROFILE.role[locale]}</p>
 
       <div className="mt-8 flex w-full flex-col gap-3">
         {latestArticle && (
           <Link
             href={`/insights/${latestArticle.slug}`}
-            className="w-full rounded-full border border-tinta/20 px-6 py-3 text-sm font-medium text-tinta transition-colors hover:border-tinta"
+            className="w-full border border-tinta/25 px-6 py-3 font-condensed text-xs tracking-[0.06em] text-tinta uppercase transition-colors hover:border-tinta"
           >
             {t("latestArticle")}
           </Link>
@@ -56,7 +56,7 @@ function LinksContent() {
           href={INSTAGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full rounded-full border border-tinta/20 px-6 py-3 text-sm font-medium text-tinta transition-colors hover:border-tinta"
+          className="w-full border border-tinta/25 px-6 py-3 font-condensed text-xs tracking-[0.06em] text-tinta uppercase transition-colors hover:border-tinta"
         >
           {t("instagram")} — {INSTAGRAM_HANDLE}
         </a>
@@ -64,13 +64,13 @@ function LinksContent() {
           href={INSTITUTO_NEXIUM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full rounded-full border border-tinta/20 px-6 py-3 text-sm font-medium text-tinta transition-colors hover:border-tinta"
+          className="w-full border border-tinta/25 px-6 py-3 font-condensed text-xs tracking-[0.06em] text-tinta uppercase transition-colors hover:border-tinta"
         >
           {t("clinicalCare")} ↗
         </a>
         <Link
           href="/contact"
-          className="w-full rounded-full bg-tinta px-6 py-3 text-sm font-medium text-papel transition-opacity hover:opacity-85"
+          className="w-full bg-tinta px-6 py-3 font-condensed text-xs tracking-[0.06em] text-papel uppercase transition-opacity hover:opacity-85"
         >
           {t("contact")}
         </Link>

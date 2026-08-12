@@ -5,7 +5,7 @@
     "research": "Research",
     "insights": "Insights",
     "contact": "Contact",
-    "clinicalCare": "Clinical Care"
+    "clinicalCare": "Instituto Nexium"
   },
   "footer": {
     "navHeading": "Navigation",
@@ -36,19 +36,18 @@
   },
   "about": {
     "heading": "About",
-    "introHeading": "Introduction",
-    "journeyHeading": "Journey",
-    "journeyText": "Mariana graduated in Psychology in 2011 and specialized in Neuropsychology in 2014 at CEPSIC, Hospital das Clínicas da FMUSP. Between 2013 and 2015, she was a volunteer intern at PANI (Pediatric Neuropsychological Assessment Project) and in the epilepsy and speech-language outpatient clinics at HC-FMUSP.",
+    "stampBadge": "Specialist · Neuropsychology",
+    "introHeading": "Supplementary note",
     "neuropsychologyHeading": "Neuropsychology",
-    "neuropsychologyText": "Her interest in neuropsychology was present from the start of her studies. Today, Mariana works in neuropsychological assessment and rehabilitation across all ages — from children to older adults — with a growing focus on aging and geriatric neuropsychology.",
+    "neuropsychologyText": "Her interest in neuropsychology was present from the start of her studies. Today, Mariana supervises the Instituto Nexium team in neuropsychological assessment and rehabilitation across all ages — from preschool age to older adults — with a growing focus on aging and geriatric neuropsychology.",
     "researchInterestsHeading": "Research Interests",
     "clinicalHeading": "Clinical Experience",
-    "clinicalText": "Mariana's clinical practice takes place at Clínica Jundiaí and Consultório Itu, both under Instituto Nexium, providing neuropsychological assessment and rehabilitation across the lifespan.",
+    "clinicalText": "Clinical care takes place across Instituto Nexium's units — in Aldeia da Serra, Alphaville, Itu, Jundiaí and Sorocaba —, providing neuropsychological assessment and rehabilitation across the lifespan. Mariana is the Institute's head and clinical supervisor, with no personal patient schedule of her own.",
     "clinicalCta": "Instituto Nexium",
     "educationHeading": "Education & Training",
     "educationEmpty": "[TO REVIEW] Academic training, specializations and internships — pending confirmation.",
     "credentialsHeading": "Professional Credentials",
-    "credentialsEmpty": "[TO REVIEW] License number (CRP) to be added — pending confirmation.",
+    "credentialsEmpty": "Specialist Title in Neuropsychology from the Conselho Federal de Psicologia (CFP — Federal Council of Psychology). [TO REVIEW] License number (CRP) to be added — pending confirmation.",
     "academicHeading": "Academic Profiles",
     "academicEmpty": "Links to Lattes, ORCID, Google Scholar and LinkedIn will be added soon."
   },
@@ -87,5 +86,10 @@
   "language": {
     "pt": "PT",
     "en": "EN"
+  },
+  "notFound": {
+    "heading": "Page not found",
+    "text": "The address you tried to reach doesn't exist or has moved.",
+    "cta": "Back to home"
   }
 }

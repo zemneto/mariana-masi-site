@@ -2,7 +2,49 @@
 
 > Documento único de retomada. Ao terminar um bloco de trabalho relevante, **atualize este arquivo** — ver protocolo de manutenção em `~/Desktop/Ecosystem/AGENTS.md`.
 
-**Atualizado em:** 11/08/2026 — `next`/`eslint-config-next` atualizados pra 16.3.0 (auditoria de segurança do Ecosystem, corrige CVEs conhecidas do Next.js; `npm audit` já estava e continua com 0 vulnerabilidades; lint e `next build --webpack` validados). Fora isso, Fase 1 completa e **publicada em produção** (10/08/2026).
+**⏳ Pendente de aprovação (12/08/2026, ainda não commitado):** redesign visual completo do site — "Direção A / Traço Clínico". Rodando em `localhost:3002` aguardando José/Mariana aprovarem antes de commitar/subir.
+
+### Por que existe
+
+José achou o layout anterior "genérico, parecia feito por IA" (kicker numerado 01/02/03 + tipografia fina + paleta cream/terracota é literalmente o padrão que ferramentas de IA tendem a gerar sem direção autoral). Pediu 3 propostas de direção visual equilibrando identidade pessoal da Mariana e linguagem visual de neurociência. A Mariana escolheu **"Traço Clínico"**: o site como um registro/ficha clínica real — papel pautado, anotações de margem, carimbos, fotos anexadas como num processo físico, e a neurociência entrando pela estrutura do documento (não por decoração). As outras duas propostas descartadas eram "Rede" (grafo de conexões) e depois "Manuscrito"/"Instrumento" (artigo científico / ficha de instrumento de avaliação) — só ficam registradas aqui como histórico de decisão, não existem no código.
+
+### Sistema visual novo
+
+- **Tipografia — só Avenir Next LT Pro, em variações de peso** (correção do José: "a fonte tem que ser Avenir Next em todo lugar, é a fonte escolhida pela Mariana pra marca dela; pode usar variações, mas sempre ela"). Primeira versão do redesign introduziu uma serifa editorial (Iowan Old Style) pro corpo/headings — **revertido**. O kit da Adobe (`use.typekit.net/qiq2iiw.css`) carrega de verdade os pesos 200/400/500/700 (+ itálicos) de `avenir-next-lt-pro`, mais um corte `avenir-next-lt-pro-condensed` (400/700) — confirmado inspecionando o CSS do kit direto (`curl`), não por suposição. Sistema final: `font-display` (Avenir Next) em **peso 200 (Ultra Light, igual à logo dela)** pro wordmark de marca (Header, Footer, avatar de `/links`, assinatura de autor) **e** pros títulos grandes (H1 de hero/página); **peso 500** pros headings de seção (H2/H3); **peso 400** pro corpo de texto (é o padrão do `body` em `globals.css` agora). `font-condensed` (o corte condensado, mesma família) substituiu o antigo `font-mono` em todas as anotações/labels/códigos/datas/nav/botões — ainda uma "variação dela", não outra fonte.
+- **Cores**: paleta real da marca mantida (papel/tinta/terracota/sálvia — nenhuma inventada). Novo token `--color-graphite` (`#6b6459`) pra anotações de margem. `--color-acento` continua o terracota escurecido (`#955030`, corrigido numa rodada anterior por contraste) — usado como "carimbo".
+- **Fundo pautado**: `body` em `globals.css` ganhou um `background-image` de linhas horizontais sutis (papel pautado), site inteiro.
+- **Sem botão em pílula em lugar nenhum** — trocado por bordas retas + mono uppercase (bracket/carimbo). `rounded-full` só sobrevive nos 2 lugares onde faz sentido de verdade: avatar circular da página `/links` e o selo de credenciais.
+- **Marquee removido** da Home (não combinava com o conceito de documento).
+- **Kicker numerado (01, 02...) virou `§1, §2...`** — componente compartilhado `src/components/Kicker.tsx`.
+- **Índice de áreas de interesse**: `AREAS_DE_INTERESSE` (`src/content/profile.ts`) ganhou campo `codigo` (NP/EC/NC/IA) substituindo o campo `cor` (cores alternadas removidas — todo código usa a mesma cor de carimbo agora). Ver `src/content/types.ts`.
+- **Fotos anexadas**: novo componente `src/components/PhotoAttach.tsx` (envolve o `MediaFrame` existente) — foto com leve rotação, sombra e uma "fita" no topo, como se estivesse grampeada num processo físico. Usa as fotos reais (`mariana-hero.jpg`, `mariana-about.jpg`).
+- **Selo de credenciais**: novo componente `src/components/Stamp.tsx` — círculo com borda, usado em `/about` pra "Título de Especialista em Neuropsicologia — CFP".
+- Aplicado em **todas** as páginas: Home, Sobre, Pesquisa, Insights (lista + artigo), Contato, Links, 404.
+- Na página **Sobre**, a antiga seção "Trajetória" (prosa livre) foi **fundida com "Formação"** — vira uma única timeline real usando `EDUCATION_TIMELINE` (Universidade Paulista → PANI/HC-FMUSP → CEPSIC → SARI/CPN), eliminando repetição de conteúdo. As chaves `journeyHeading`/`journeyText` foram removidas de `messages/pt.json`/`en.json` (o conteúdo real já está coberto pela timeline). `neuropsychologyText` virou uma nota reflexiva curta própria.
+
+### Bug real encontrado e corrigido durante a verificação
+
+O hero da Home e do Sobre usava `grid-cols-[56px_1fr]` sem variante responsiva — no mobile, a coluna de anotação de margem fica com `hidden sm:block` (sai do fluxo do grid), e o único item restante era auto-posicionado na primeira track (56px) em vez da segunda, espremendo todo o conteúdo do hero numa coluna de 56px (texto quebrando palavra por palavra). Corrigido pra `grid-cols-1 sm:grid-cols-[56px_1fr]` nos dois arquivos. Vale lembrar desse padrão (`hidden` num grid item sem tornar o `grid-template-columns` responsivo junto) se replicar essa estrutura em outra página.
+
+### Verificado
+
+`npm run lint` limpo (só o warning pré-existente do `MediaFrame`), `tsc --noEmit` limpo, **`npm run build` (produção) limpo** — todas as 17 rotas geram como conteúdo estático. Testado ao vivo em PT e EN, desktop e mobile (inclusive o bug do grid acima, achado testando mobile de verdade). Menu mobile, `PageTransition` e `prefers-reduced-motion` (da rodada anterior) continuam funcionando com o novo visual.
+
+### Rodada anterior (UX/motion, incorporada acima)
+
+- **Transição entre páginas** (`src/components/PageTransition.tsx`, usado em `[locale]/layout.tsx`) — fade + leve deslocamento vertical (`AnimatePresence mode="wait"`, ~220ms) em vez do corte seco padrão do App Router.
+- **Bug de hover de 1.6s corrigido** em `MediaFrame.tsx` — o `whileHover` (zoom nas fotos) usava a mesma duração da entrada no scroll (1.6s); agora tem transição própria (400ms).
+- **`prefers-reduced-motion` respeitado** em `Reveal.tsx` e `MediaFrame.tsx`.
+- **Menu mobile animado** (`Header.tsx`) — `AnimatePresence` com fade+slide.
+- **Easing consolidado** em `src/lib/motion.ts` (`EASE_OUT`).
+- **Contraste do link corrigido**: `--color-acento` tinha razão de contraste 3.02:1 — abaixo do mínimo WCAG AA (4.5:1). Escurecido pra `#955030` (4.75:1). `--color-terracota` (cor de marca amostrada da logo) mantida intacta.
+- **Página 404 customizada** (`src/app/[locale]/not-found.tsx` + chave `notFound` em `messages/pt.json`/`en.json`) — antes caía na 404 genérica do Next (fundo preto, sem marca, em inglês). Funciona para links quebrados dentro do site (ex: slug de artigo inválido); uma URL totalmente fora do domínio de rotas conhecidas ainda pode cair na 404 genérica do Next — limitação conhecida, não resolvida.
+- **Alinhamento de texto** nas listas de "Áreas de Interesse" (Home e Sobre): descrição de cada área estava `text-right` (difícil de escanear em várias linhas) — alinhado à esquerda.
+- **Consistência de hover**: lista do Insights agora usa o mesmo tratamento (translate-x no hover) que a lista de Áreas de Interesse, em vez de só sublinhar.
+
+Todos os 8 pontos vieram de uma auditoria pedida pelo José (skill `improve-animations` + revisão manual de contraste/UX/responsividade). Um ponto ficou só como observação, não corrigido: a legibilidade dos acentos (á, õ, ç) no peso ultra-fino da Avenir Next não pôde ser validada no preview local (sem acesso à Adobe Fonts no sandbox, caiu no fallback Jost) — vale conferir em produção.
+
+**Atualizado em:** 11/08/2026 — rodada de correções de conteúdo pedida pela Mariana (via José): "especialista" com E maiúsculo, texto do Instituto Nexium reescrito pra deixar claro que **o Instituto atende e ela supervisiona a equipe** (não atende pessoalmente), "de crianças a idosos" → "de pré-escolares a idosos", card de Neurociência com texto mais humano, card de Neuropsicologia com reabilitação/SNC/emoção, e **Formação (`EDUCATION_TIMELINE`) e Credenciais preenchidas com dados reais** que a Mariana mandou: Universidade Paulista (graduação), nome completo do CEPSIC (Centro de Estudos Psico-Cirúrgicos da Divisão de Psicologia do ICHC-FMUSP), PANI corrigido pra "Protocolo" (não "Projeto") de Avaliação Neuropsicológica Infantil, HC-FMUSP por extenso, curso 2025 completo (Qualificação Profissional na Abordagem Neuropsicológica Multidisciplinar em Transtornos Neurocognitivos do Envelhecimento) no SARI/CPN (AFIP/UNIFESP), e título de Especialista em Neuropsicologia pelo CFP. Também corrigido "Experiência Clínica" (`clinicalText` em `messages/pt.json`/`en.json`): **Mariana não atende mais em Jundiaí** — para o Instituto ela é **head e supervisora clínica**, sem agenda de atendimento própria. Unidades do Instituto Nexium listadas: **Aldeia da Serra, Alphaville, Itu, Jundiaí e Sorocaba** (substituiu a menção antiga só a "Clínica Jundiaí e Consultório Itu"). Arquivos: `src/content/profile.ts`, `messages/pt.json`, `messages/en.json`. Ainda falta só o **número de CRP** (ver pendências). Antes disso: `next`/`eslint-config-next` atualizados pra 16.3.0 (auditoria de segurança do Ecosystem, corrige CVEs conhecidas do Next.js; `npm audit` já estava e continua com 0 vulnerabilidades; lint e `next build --webpack` validados). Fase 1 completa e **publicada em produção** (10/08/2026).
 
 ## O que é e por quê existe
 
@@ -67,8 +109,7 @@ José achou o primeiro preview "meio preto e branco demais" (parecia "site de me
 
 Regra já usada na Instituto Nexium Site pra bios da equipe: **nunca inventar credenciais**. Estes pontos estão com placeholder claramente marcado, esperando a Mariana/José:
 
-- Biografia longa (`src/content/profile.ts` → `PROFILE.introduction` é genérico sobre a área, não uma bio pessoal real)
-- Trajetória profissional e acadêmica, formação, CRP (`about` em `messages/pt.json` e `messages/en.json`, seções `journeyText`, `neuropsychologyText`, `educationEmpty`, `credentialsEmpty`)
+- **Número de CRP** — único dado de credencial ainda faltando (`messages/pt.json`/`en.json` → `credentialsEmpty`, já marcado `[REVISAR]`). Formação, especialização, PANI, CEPSIC, SARI/CPN e título de Especialista pelo CFP já estão preenchidos com dados reais (atualização de 11/08/2026).
 - Links reais de Lattes, ORCID, Google Scholar, LinkedIn (`src/content/profile.ts` → `ACADEMIC_PROFILES`, todos com `url: null` hoje)
 - E-mail profissional de contato (`src/lib/site.ts` → `CONTACT_EMAIL`, hoje é um placeholder `contato@marianamasi.com`, não confirmado)
 - Projetos de pesquisa e publicações reais (`src/content/research.ts` — arrays vazios, estrutura pronta)

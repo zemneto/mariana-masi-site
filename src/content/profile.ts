@@ -15,13 +15,13 @@ export const PROFILE = {
   // credentialsEmpty em about.
   introduction: {
     pt: [
-      "Com mais de uma década de atuação no campo da neuropsicologia clínica, Mariana Costa Masi é psicóloga especialista em Neuropsicologia, com sólida experiência em avaliação neuropsicológica e psicodiagnóstico.",
-      "À frente do Instituto Nexium, dedica-se à condução de um trabalho pautado pela precisão técnica e pelo cuidado individualizado, atendendo pacientes em diferentes fases da vida, da infância ao envelhecimento.",
+      "Com mais de uma década de atuação no campo da neuropsicologia clínica, Mariana Costa Masi é psicóloga Especialista em Neuropsicologia, com sólida experiência em avaliação neuropsicológica e reabilitação.",
+      "À frente do Instituto Nexium, supervisiona uma equipe que atende pacientes em diferentes fases da vida — de pré-escolares a idosos —, sempre pautada pela precisão técnica e pelo cuidado individualizado.",
       "Além da atuação clínica, também presta serviços a empresas, auxiliando na implementação e adequação de programas voltados à saúde mental no ambiente de trabalho. Sua prática é orientada pelo compromisso com a qualidade, pela escuta qualificada e pela busca contínua por promover compreensão e bem-estar em diferentes contextos.",
     ],
     en: [
-      "With more than a decade of experience in clinical neuropsychology, Mariana Costa Masi is a psychologist specialized in Neuropsychology, with solid experience in neuropsychological assessment and psychodiagnostics.",
-      "At the helm of Instituto Nexium, she leads work grounded in technical precision and individualized care, seeing patients across every stage of life, from childhood to aging.",
+      "With more than a decade of experience in clinical neuropsychology, Mariana Costa Masi is a psychologist specialized in Neuropsychology, with solid experience in neuropsychological assessment and rehabilitation.",
+      "At the helm of Instituto Nexium, she supervises a team that cares for patients across every stage of life — from preschool age to older adulthood —, always grounded in technical precision and individualized care.",
       "Beyond her clinical practice, she also provides services to companies, helping implement and adapt mental health programs in the workplace. Her practice is guided by a commitment to quality, attentive listening, and an ongoing pursuit of understanding and well-being across different contexts.",
     ],
   },
@@ -30,39 +30,39 @@ export const PROFILE = {
 export const AREAS_DE_INTERESSE: AreaDeInteresse[] = [
   {
     slug: "neuropsicologia",
+    codigo: "NP",
     titulo: { pt: "Neuropsicologia", en: "Neuropsychology" },
     descricao: {
-      pt: "Avaliação, cognição e a relação entre função cerebral e comportamento.",
-      en: "Assessment, cognition and the relationship between brain function and behavior.",
+      pt: "Avaliação, reabilitação e a relação entre o SNC, funções cognitivas, comportamento e emoção.",
+      en: "Assessment, rehabilitation and the relationship between the CNS, cognitive functions, behavior and emotion.",
     },
-    cor: "var(--color-terracota)",
   },
   {
     slug: "envelhecimento-e-cognicao",
+    codigo: "EC",
     titulo: { pt: "Envelhecimento & Cognição", en: "Aging & Cognition" },
     descricao: {
       pt: "Envelhecimento cognitivo, demências, prevenção e longevidade saudável.",
       en: "Cognitive aging, dementia, prevention and healthy longevity.",
     },
-    cor: "var(--color-salvia)",
   },
   {
     slug: "neurociencia",
+    codigo: "NC",
     titulo: { pt: "Neurociência", en: "Neuroscience" },
     descricao: {
-      pt: "Compreender processos cognitivos a partir da neurociência contemporânea.",
-      en: "Understanding cognitive processes through contemporary neuroscience.",
+      pt: "Como o cérebro molda quem somos.",
+      en: "How the brain shapes who we are.",
     },
-    cor: "var(--color-terracota)",
   },
   {
     slug: "tecnologia-e-ia",
+    codigo: "IA",
     titulo: { pt: "Tecnologia & IA", en: "Technology & AI" },
     descricao: {
       pt: "Como tecnologia e inteligência artificial podem transformar avaliação, pesquisa e cuidado em saúde.",
       en: "Exploring how technology and artificial intelligence may transform assessment, research and healthcare.",
     },
-    cor: "var(--color-salvia)",
   },
 ];
 
@@ -87,26 +87,28 @@ export const EDUCATION_TIMELINE: Array<{
   {
     period: "2011",
     title: { pt: "Graduação em Psicologia", en: "Bachelor's Degree in Psychology" },
+    institution: "Universidade Paulista",
   },
   {
     period: "2013–2015",
     title: {
-      pt: "Estágio voluntário — Avaliação Neuropsicológica Infantil (PANI), ambulatórios de epilepsia e foniatria",
-      en: "Volunteer internship — Pediatric Neuropsychological Assessment (PANI), epilepsy and speech-language outpatient clinics",
+      pt: "Estágio voluntário — Protocolo de Avaliação Neuropsicológica Infantil (PANI), ambulatórios de epilepsia e foniatria",
+      en: "Volunteer internship — Protocolo de Avaliação Neuropsicológica Infantil (PANI), epilepsy and speech-language outpatient clinics",
     },
-    institution: "Hospital das Clínicas da FMUSP",
+    institution: "Hospital das Clínicas da Faculdade de Medicina da USP (HC-FMUSP)",
   },
   {
     period: "2014",
     title: { pt: "Especialização em Neuropsicologia", en: "Specialization in Neuropsychology" },
-    institution: "CEPSIC — Hospital das Clínicas da FMUSP",
+    institution: "Centro de Estudos Psico-Cirúrgicos da Divisão de Psicologia do ICHC-FMUSP (CEPSIC)",
   },
   {
     period: "2025",
     title: {
-      pt: "Aprimoramento em Avaliação e Reabilitação de Idosos (CPN/SARI)",
-      en: "Advanced Training in Assessment and Rehabilitation of Older Adults (CPN/SARI)",
+      pt: "Curso de Qualificação Profissional na Abordagem Neuropsicológica Multidisciplinar em Transtornos Neurocognitivos do Envelhecimento",
+      en: "Professional Qualification Course in the Multidisciplinary Neuropsychological Approach to Neurocognitive Disorders of Aging",
     },
-    institution: "UNIFESP",
+    institution:
+      "Serviço de Atendimento e Reabilitação de Idosos (SARI), Centro Paulista de Neuropsicologia (CPN – AFIP/UNIFESP)",
   },
 ];

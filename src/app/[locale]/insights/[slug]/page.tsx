@@ -84,24 +84,24 @@ function ArticleContent({
 
       <Link
         href="/insights"
-        className="text-sm text-tinta-suave hover:text-tinta"
+        className="font-condensed text-xs text-tinta-suave uppercase transition-colors hover:text-tinta"
       >
         ← {t("backToInsights")}
       </Link>
 
-      <p className="mt-8 text-xs font-medium uppercase tracking-wide text-acento">
+      <p className="mt-8 font-condensed text-[11px] tracking-[0.1em] text-acento uppercase">
         {article.category}
       </p>
-      <h1 className="mt-2 font-display text-4xl font-[200] text-tinta sm:text-5xl">
+      <h1 className="mt-2 font-display font-[200] text-4xl text-tinta sm:text-5xl">
         {article.title}
       </h1>
       {article.subtitle && (
-        <p className="mt-4 font-display text-xl text-tinta-suave">
+        <p className="mt-4 font-display font-[400] text-xl text-tinta-suave italic">
           {article.subtitle}
         </p>
       )}
 
-      <p className="mt-6 text-sm text-tinta-suave/70">
+      <p className="mt-6 font-condensed text-[11px] text-graphite">
         {article.author} ·{" "}
         {new Date(article.publishedAt).toLocaleDateString(
           locale === "pt" ? "pt-BR" : "en-US",
@@ -112,13 +112,13 @@ function ArticleContent({
           : ""}
       </p>
 
-      <div className="prose prose-neutral mt-10 max-w-none whitespace-pre-line text-lg leading-relaxed text-tinta/90 prose-headings:font-display">
+      <div className="prose prose-neutral mt-10 max-w-none text-lg leading-relaxed whitespace-pre-line text-tinta/90 prose-headings:font-display">
         {article.content}
       </div>
 
       {article.references && article.references.length > 0 && (
-        <section className="mt-14 border-t border-tinta/10 pt-8">
-          <h2 className="font-display text-xl text-tinta">
+        <section className="mt-14 border-t border-tinta/15 pt-8">
+          <h2 className="font-display font-[500] text-xl text-tinta">
             {t("referencesHeading")}
           </h2>
           <ul className="mt-4 space-y-2 text-sm text-tinta-suave">
@@ -129,7 +129,7 @@ function ArticleContent({
                     href={reference.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-tinta hover:underline"
+                    className="transition-colors hover:text-tinta hover:underline"
                   >
                     {reference.label}
                   </a>
@@ -142,16 +142,16 @@ function ArticleContent({
         </section>
       )}
 
-      <section className="mt-12 border-t border-tinta/10 pt-8">
-        <p className="font-display text-base tracking-wide text-tinta uppercase">
+      <section className="mt-12 border-t border-tinta/15 pt-8">
+        <p className="font-display font-[200] text-base tracking-wide text-tinta uppercase">
           {PROFILE.name}
         </p>
-        <p className="text-sm text-tinta-suave">{PROFILE.role[locale]}</p>
+        <p className="font-condensed text-xs text-tinta-suave">{PROFILE.role[locale]}</p>
       </section>
 
       {related.length > 0 && (
-        <section className="mt-14 border-t border-tinta/10 pt-8">
-          <h2 className="font-display text-xl text-tinta">
+        <section className="mt-14 border-t border-tinta/15 pt-8">
+          <h2 className="font-display font-[500] text-xl text-tinta">
             {t("relatedHeading")}
           </h2>
           <ul className="mt-4 space-y-4">
@@ -159,7 +159,7 @@ function ArticleContent({
               <li key={item.slug}>
                 <Link
                   href={`/insights/${item.slug}`}
-                  className="font-display text-lg text-tinta hover:underline"
+                  className="font-display font-[500] text-lg text-tinta transition-colors hover:text-acento"
                 >
                   {item.title}
                 </Link>

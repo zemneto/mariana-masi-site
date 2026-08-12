@@ -2,18 +2,21 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { NAV_ITEMS, INSTITUTO_NEXIUM_URL } from "@/lib/site";
 import { PROFILE } from "@/content/profile";
+import { EASE_OUT } from "@/lib/motion";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header() {
   const t = useTranslations("nav");
   const [menuAberto, setMenuAberto] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-tinta/10 bg-papel/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-tinta/15 bg-papel/95 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4 sm:px-8">
         <Link
           href="/"
@@ -28,7 +31,7 @@ export function Header() {
             className="h-9 w-9 sm:h-10 sm:w-10"
             priority
           />
-          <span className="font-display text-sm tracking-[0.14em] text-tinta uppercase sm:text-base">
+          <span className="font-display font-[200] text-sm tracking-[0.14em] text-tinta uppercase sm:text-base">
             {PROFILE.name}
           </span>
         </Link>
@@ -38,7 +41,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-[11px] font-medium tracking-[0.18em] text-tinta/75 uppercase transition-colors hover:text-tinta"
+              className="font-condensed text-[11px] tracking-[0.12em] text-tinta-suave uppercase transition-colors hover:text-tinta"
             >
               {t(item.key)}
             </Link>
@@ -50,7 +53,7 @@ export function Header() {
             href={INSTITUTO_NEXIUM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-tinta/25 px-4 py-2 text-xs font-medium uppercase tracking-wide text-tinta/70 transition-colors hover:border-tinta hover:text-tinta"
+            className="border border-acento/60 px-4 py-2 font-condensed text-[11px] tracking-[0.08em] text-acento uppercase transition-colors hover:border-acento hover:bg-acento/5"
           >
             {t("clinicalCare")} ↗
           </a>
@@ -62,7 +65,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMenuAberto((aberto) => !aberto)}
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-tinta"
+            className="flex h-10 w-10 items-center justify-center text-tinta"
             aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
             aria-expanded={menuAberto}
           >
@@ -91,30 +94,41 @@ export function Header() {
         </div>
       </div>
 
-      {menuAberto && (
-        <nav className="border-t border-tinta/10 bg-papel px-6 py-4 sm:px-8 lg:hidden">
-          <div className="flex flex-col gap-3">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMenuAberto(false)}
-                className="font-display text-sm text-tinta/80 hover:text-tinta"
+      <AnimatePresence>
+        {menuAberto && (
+          <motion.nav
+            initial={{ opacity: 0, y: prefersReducedMotion ? 0 : -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: prefersReducedMotion ? 0 : -8 }}
+            transition={{
+              duration: prefersReducedMotion ? 0.15 : 0.25,
+              ease: EASE_OUT,
+            }}
+            className="border-t border-tinta/15 bg-papel px-6 py-4 sm:px-8 lg:hidden"
+          >
+            <div className="flex flex-col gap-3">
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMenuAberto(false)}
+                  className="font-condensed text-sm tracking-[0.06em] text-tinta-suave uppercase transition-colors hover:text-tinta"
+                >
+                  {t(item.key)}
+                </Link>
+              ))}
+              <a
+                href={INSTITUTO_NEXIUM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-block w-fit border border-acento/60 px-4 py-2 font-condensed text-[11px] tracking-[0.08em] text-acento uppercase transition-colors hover:border-acento hover:bg-acento/5"
               >
-                {t(item.key)}
-              </Link>
-            ))}
-            <a
-              href={INSTITUTO_NEXIUM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-block w-fit rounded-full border border-tinta/25 px-4 py-2 text-xs font-medium uppercase tracking-wide text-tinta/70"
-            >
-              {t("clinicalCare")} ↗
-            </a>
-          </div>
-        </nav>
-      )}
+                {t("clinicalCare")} ↗
+              </a>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

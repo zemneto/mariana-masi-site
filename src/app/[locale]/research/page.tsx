@@ -3,6 +3,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/Container";
 import { Reveal } from "@/components/Reveal";
+import { Kicker } from "@/components/Kicker";
 import {
   PUBLICATIONS,
   RESEARCH_INTRO,
@@ -30,36 +31,28 @@ export default async function ResearchPage({
   return <ResearchContent />;
 }
 
-function Kicker({ n }: { n: string }) {
-  return (
-    <span className="font-display text-sm tabular-nums text-tinta-suave/70">
-      {n}
-    </span>
-  );
-}
-
 function ResearchContent() {
   const t = useTranslations("research");
   const locale = useLocale() as "pt" | "en";
 
   return (
     <>
-      <section className="border-b border-tinta/10 px-6 py-24 sm:px-8 sm:py-32">
+      <section className="border-b border-tinta/15 px-6 py-24 sm:px-8 sm:py-28">
         <Container className="max-w-3xl px-0">
-          <h1 className="font-display text-6xl leading-[0.95] font-[200] text-tinta sm:text-7xl">
+          <h1 className="font-display font-[200] text-5xl leading-[1.02] text-tinta sm:text-6xl">
             {t("heading")}
           </h1>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-tinta-suave">
+          <p className="mt-8 max-w-xl text-lg leading-relaxed text-tinta">
             {RESEARCH_INTRO[locale]}
           </p>
         </Container>
       </section>
 
-      <section className="px-6 py-20 sm:px-8 sm:py-28">
+      <section className="px-6 py-20 sm:px-8 sm:py-24">
         <Container className="max-w-3xl px-0">
           <Reveal>
-            <Kicker n="01" />
-            <h2 className="mt-2 font-display text-2xl text-tinta">
+            <Kicker>§1</Kicker>
+            <h2 className="mt-2 font-display font-[500] text-2xl text-tinta">
               {t("questionsHeading")}
             </h2>
             <p className="mt-4 max-w-xl leading-relaxed text-tinta-suave">
@@ -69,11 +62,11 @@ function ResearchContent() {
         </Container>
       </section>
 
-      <section className="border-t border-tinta/10 px-6 py-20 sm:px-8 sm:py-28">
+      <section className="border-t border-tinta/15 px-6 py-20 sm:px-8 sm:py-24">
         <Container className="max-w-3xl px-0">
           <Reveal>
-            <Kicker n="02" />
-            <h2 className="mt-2 font-display text-2xl text-tinta">
+            <Kicker>§2</Kicker>
+            <h2 className="mt-2 font-display font-[500] text-2xl text-tinta">
               {t("projectsHeading")}
             </h2>
             {RESEARCH_PROJECTS.length === 0 ? (
@@ -84,7 +77,7 @@ function ResearchContent() {
               <ul className="mt-6 space-y-6">
                 {RESEARCH_PROJECTS.map((project) => (
                   <li key={project.id}>
-                    <p className="font-display text-lg text-tinta">
+                    <p className="font-display font-[500] text-lg text-tinta">
                       {project.title[locale]}
                     </p>
                     <p className="mt-1 text-sm text-tinta-suave">
@@ -98,11 +91,11 @@ function ResearchContent() {
         </Container>
       </section>
 
-      <section className="border-t border-tinta/10 px-6 py-20 sm:px-8 sm:py-28">
+      <section className="border-t border-tinta/15 px-6 py-20 sm:px-8 sm:py-24">
         <Container className="max-w-3xl px-0">
           <Reveal>
-            <Kicker n="03" />
-            <h2 className="mt-2 font-display text-2xl text-tinta">
+            <Kicker>§3</Kicker>
+            <h2 className="mt-2 font-display font-[500] text-2xl text-tinta">
               {t("publicationsHeading")}
             </h2>
             {PUBLICATIONS.length === 0 ? (

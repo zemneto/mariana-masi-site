@@ -33,12 +33,12 @@ function InsightsContent() {
 
   return (
     <>
-      <section className="border-b border-tinta/10 px-6 py-24 sm:px-8 sm:py-32">
+      <section className="border-b border-tinta/15 px-6 py-24 sm:px-8 sm:py-28">
         <Container className="max-w-3xl px-0">
-          <h1 className="font-display text-6xl leading-[0.95] font-[200] text-tinta sm:text-7xl">
+          <h1 className="font-display font-[200] text-5xl leading-[1.02] text-tinta sm:text-6xl">
             {t("heading")}
           </h1>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-tinta-suave">
+          <p className="mt-8 max-w-xl text-lg leading-relaxed text-tinta">
             {t("intro")}
           </p>
         </Container>
@@ -49,15 +49,15 @@ function InsightsContent() {
           {articles.length === 0 ? (
             <p className="text-tinta-suave">{t("empty")}</p>
           ) : (
-            <ul className="divide-y divide-tinta/10 border-t border-tinta/10">
+            <ul className="divide-y divide-tinta/15 border-t border-tinta/15">
               {articles.map((article, index) => (
                 <Reveal key={article.slug} delay={index * 0.06}>
                   <li className="py-8">
                     <Link href={`/insights/${article.slug}`} className="group">
-                      <p className="text-xs font-medium uppercase tracking-wide text-acento">
+                      <p className="font-condensed text-[11px] tracking-[0.1em] text-acento uppercase">
                         {article.category}
                       </p>
-                      <h2 className="mt-2 font-display text-2xl text-tinta group-hover:underline">
+                      <h2 className="mt-2 font-display font-[500] text-2xl text-tinta transition-transform duration-300 group-hover:translate-x-2">
                         {article.title}
                       </h2>
                       {article.excerpt && (
@@ -65,7 +65,7 @@ function InsightsContent() {
                           {article.excerpt}
                         </p>
                       )}
-                      <p className="mt-3 text-sm text-tinta-suave/70">
+                      <p className="mt-3 font-condensed text-[11px] text-graphite">
                         {new Date(article.publishedAt).toLocaleDateString(
                           locale === "pt" ? "pt-BR" : "en-US",
                           {

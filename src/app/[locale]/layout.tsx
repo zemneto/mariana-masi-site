@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { Analytics } from "@vercel/analytics/react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { PageTransition } from "@/components/PageTransition";
 import { routing } from "@/i18n/routing";
 import { INSTAGRAM_URL, SITE_URL } from "@/lib/site";
 import { PROFILE } from "@/content/profile";
@@ -109,7 +110,9 @@ export default async function LocaleLayout({
         />
         <NextIntlClientProvider>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
         </NextIntlClientProvider>
         <Analytics />
